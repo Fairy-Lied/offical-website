@@ -35,12 +35,6 @@ const albums = [
     cover: 'https://images.unsplash.com/photo-1671509774803-1640e8853b50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzJ8&ixlib=rb-4.1.0&q=80&w=1080',
     tracks: ['Prologue: The Fallen', 'Shadows & Vows', 'Cathedral of Lies', 'Eternal Night', 'Whispers in the Dark']
   },
-  {
-    title: 'Cathedral of Ashes',
-    year: '2024',
-    cover: 'https://images.unsplash.com/photo-1659904197464-7aa86fcdad9d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzN8&ixlib=rb-4.1.0&q=80&w=1080',
-    tracks: ['Ashes to Ashes', 'Gothic Rose', 'Symphony of Sorrow', 'The Last Prayer']
-  },
 ];
 
 // 巡演数据
