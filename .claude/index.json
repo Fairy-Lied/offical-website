@@ -1,0 +1,169 @@
+{
+  "timestamp": "2026-03-07T15:54:31Z",
+  "project": {
+    "name": "fairy-lied_offical-website",
+    "description": "Fairy Lied 乐队官方网站 - 基于 Nuxt 3 + Vue 3 + TypeScript",
+    "rootPath": "/Users/lunayj/Project/MY/fairy-lied_offical-website"
+  },
+  "scanSummary": {
+    "totalFiles": 14,
+    "scannedFiles": 14,
+    "coveragePercent": 100,
+    "truncated": false
+  },
+  "modules": [
+    {
+      "name": "pages",
+      "path": "./pages",
+      "description": "页面路由组件，包含首页、新闻、巡演、音乐、关于等页面",
+      "files": [
+        "index.vue",
+        "news.vue",
+        "tour.vue",
+        "music.vue",
+        "about.vue"
+      ],
+      "entryPoints": ["index.vue"],
+      "interfaces": ["/", "/news", "/tour", "/music", "/about"],
+      "hasTests": false,
+      "coverage": "100%"
+    },
+    {
+      "name": "assets",
+      "path": "./assets",
+      "description": "静态资源，包含全局 CSS 样式文件",
+      "files": ["css/main.css"],
+      "entryPoints": ["css/main.css"],
+      "interfaces": [],
+      "hasTests": false,
+      "coverage": "100%"
+    },
+    {
+      "name": "public",
+      "path": "./public",
+      "description": "公开静态资源，包含图片、favicon、robots.txt 等",
+      "files": [
+        "favicon.ico",
+        "robots.txt",
+        "images/hero-bg.svg",
+        "images/noise.svg"
+      ],
+      "entryPoints": [],
+      "interfaces": ["/favicon.ico", "/robots.txt", "/images/*"],
+      "hasTests": false,
+      "coverage": "100%"
+    },
+    {
+      "name": "server",
+      "path": "./server",
+      "description": "服务端代码目录（当前为 Nuxt 默认配置）",
+      "files": ["tsconfig.json"],
+      "entryPoints": [],
+      "interfaces": [],
+      "hasTests": false,
+      "coverage": "100%"
+    },
+    {
+      "name": ".spec-workflow",
+      "path": "./.spec-workflow",
+      "description": "规范工作流模板目录",
+      "files": [
+        "user-templates/README.md",
+        "templates/requirements-template.md",
+        "templates/design-template.md",
+        "templates/tasks-template.md",
+        "templates/product-template.md",
+        "templates/tech-template.md",
+        "templates/structure-template.md"
+      ],
+      "entryPoints": [],
+      "interfaces": [],
+      "hasTests": false,
+      "coverage": "100%"
+    }
+  ],
+  "configFiles": [
+    "package.json",
+    "nuxt.config.ts",
+    "tailwind.config.js",
+    "tsconfig.json",
+    "eslint.config.mjs"
+  ],
+  "techStack": {
+    "framework": "Nuxt 3",
+    "uiFramework": "Vue 3",
+    "language": "TypeScript",
+    "styling": ["Tailwind CSS", "Nuxt UI"],
+    "packageManager": "pnpm",
+    "fonts": ["Cinzel", "Roboto", "Noto Sans SC"]
+  },
+  "ignored": {
+    "patterns": [
+      "node_modules/**",
+      ".nuxt/**",
+      ".output/**",
+      ".data/**",
+      ".nitro/**",
+      ".cache/**",
+      "dist/**",
+      "images/*.png"
+    ],
+    "reasons": {
+      "node_modules": "dependencies",
+      ".nuxt": "build output",
+      ".output": "production build",
+      "images/*.png": "generated temp files"
+    }
+  },
+  "gaps": [
+    {
+      "category": "tests",
+      "description": "No automated tests configured",
+      "recommendation": "Add Vitest for unit tests, Vue Test Utils for component tests, Playwright for E2E"
+    },
+    {
+      "category": "components",
+      "description": "No reusable Vue components directory",
+      "recommendation": "Create components/ directory for shared UI components"
+    },
+    {
+      "category": "composables",
+      "description": "No custom composables",
+      "recommendation": "Create composables/ directory for reusable logic"
+    },
+    {
+      "category": "content",
+      "description": "Data is hardcoded in pages",
+      "recommendation": "Consider using @nuxt/content or server APIs for content management"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "medium",
+      "action": "Create components/ directory",
+      "reason": "Extract reusable UI components from pages"
+    },
+    {
+      "priority": "medium",
+      "action": "Add basic test setup",
+      "reason": "Ensure code quality and prevent regressions"
+    },
+    {
+      "priority": "low",
+      "action": "Create composables/ directory",
+      "reason": "Extract shared logic like scroll handling, data fetching"
+    },
+    {
+      "priority": "low",
+      "action": "Consider @nuxt/content",
+      "reason": "Manage news, tour dates, music content via markdown files"
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2026-03-07T15:54:31Z",
+      "action": "initialize",
+      "details": "Initial architecture scan and documentation creation"
+    }
+  ]
+}

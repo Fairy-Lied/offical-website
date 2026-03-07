@@ -2,58 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* 主要颜色 */
-  --primary-red: #ff3333;
-  --primary-dark: #cc0000;
-  --accent-gold: #ffcc33;
-  --accent-orange: #ff9966;
+/* === 全局盒模型设置 === */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-  /* 背景颜色 */
-  --bg-black: #000000;
-  --bg-dark: #0a0a0a;
-  --bg-card: rgba(255, 255, 255, 0.05);
+:root {
+  /* === V2 设计配色 === */
+  /* 主要颜色 */
+  --primary-accent: #FF174F;
+  --primary-accent-hover: #FF2F7D;
+  --primary-dark: #cc0000;
+
+  /* 背景颜色 - V2 黑暗主题 */
+  --bg-primary: #060609;
+  --bg-secondary: #07070A;
+  --bg-tertiary: #07070C;
+  --bg-card: #241019;
+  --bg-card-hover: #2D233A;
 
   /* 文本颜色 */
-  --text-white: #ffffff;
-  --text-light: #e0e0e0;
-  --text-gray: #a0a0a0;
-  --text-dark: #505050;
+  --text-title: #F2EEF8;
+  --text-body: #C5BDD4;
+  --text-secondary: #D6CCEA;
+  --text-muted: #B7ABC8;
+  --text-subtle: #9F95B2;
 
   /* 边框颜色 */
-  --border-dark: #333333;
+  --border-dark: #1A1424;
   --border-light: rgba(255, 255, 255, 0.1);
+  --border-accent: #A22A55;
 
   /* 阴影 */
-  --shadow-red: 0 5px 15px rgba(255, 51, 51, 0.3);
+  --shadow-red: 0 5px 15px rgba(255, 23, 79, 0.3);
   --shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+  /* 历史成员遮罩 */
+  --mask-former: rgba(0, 0, 0, 0.47);
+  --mask-former-hover: rgba(0, 0, 0, 0.4);
+
+  /* 动效时间 */
+  --transition-hover: 180ms;
+  --transition-press: 120ms;
+  --transition-scroll: 400ms;
 }
 
 /* 基础样式 */
-body {
-  font-family: "Roboto", "Noto Sans SC", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg-black);
-  color: var(--text-white);
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
-/* 金属质感文字 */
+body {
+  font-family: "Inter", "Roboto", "Noto Sans SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-body);
+}
+
+/* 金属质感文字 - V2 */
 .font-metal {
   font-family: "Cinzel", serif;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
+/* 章节标题下划线 - V2 规范 */
+.section-title {
+  font-family: "Cinzel", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 12px;
+}
+
+.section-accent {
+  width: 110px;
+  height: 2px;
+  background-color: var(--primary-accent);
+}
+
+/* 渐变色文字 - V2 版本 */
 .gradient-text {
-  background: linear-gradient(to right, var(--primary-red), var(--accent-orange), var(--accent-gold));
+  background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-hover));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
 }
 
-/* 导航链接效果 */
+/* V2 玻璃效果 */
+.glass-effect {
+  background: rgba(36, 16, 25, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 导航链接效果 - V2 */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -61,12 +106,22 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--primary-red), var(--accent-gold));
-  transition: width 0.3s ease;
+  background: var(--primary-accent);
+  transition: width var(--transition-hover) ease;
 }
 
 .nav-link:hover::after {
   width: 100%;
+}
+
+/* 导航链接文字 */
+.nav-link {
+  color: var(--text-secondary);
+  transition: color var(--transition-hover) ease;
+}
+
+.nav-link:hover {
+  color: var(--text-title);
 }
 
 /* 页面过渡动画 */
@@ -81,24 +136,7 @@ body {
   transform: translateY(10px);
 }
 
-/* 滚动条样式 */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 51, 51, 0.5);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 51, 51, 0.7);
-}
+/* 滚动条样式 - 使用浏览器默认 */
 
 /* 通用动画类 */
 .animate-fade-in {
