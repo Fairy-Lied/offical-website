@@ -25,7 +25,7 @@ interface HeroSectionProps {
 
 const props = withDefaults(defineProps<HeroSectionProps>(), {
   title: 'Fairy Lied',
-  subtitle: '妖精说了谎 · Gothic Metal / Symphonic Metal',
+  subtitle: '妖精说了谎 · Gothic / Symphonic Metal',
   description: 'A dark symphonic journey through lies, fate and salvation.',
   nextSectionId: 'legend',
 })

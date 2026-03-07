@@ -53,7 +53,7 @@ function getStatusClasses(status: TourDate['status']): string {
       <!-- 章节标题 -->
       <div class="section-header">
         <h2 id="tour-title" class="section-title">
-          On Tour 巡演
+          On Tour 演出
         </h2>
         <div class="red-line" />
       </div>

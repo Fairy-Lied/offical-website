@@ -34,12 +34,11 @@ const props = defineProps<CovenSectionProps>()
       <!-- 章节标题 -->
       <div class="section-header">
         <h2 id="coven-title" class="section-title">
-          The Coven 成员阵列
+          The Coven 成员
         </h2>
         <div class="red-line" />
-        <p class="section-subtitle">Current Lineup</p>
       </div>
-
+      <p class="section-subtitle">Current Lineup</p>
       <!-- 当前成员 - 4列网格 -->
       <div
         class="members-grid"
@@ -62,7 +61,8 @@ const props = defineProps<CovenSectionProps>()
       </div>
 
       <!-- 历史成员标题 -->
-      <h3 class="former-title">Former Members</h3>
+<!--      <h3 class="former-title">Former Members</h3>-->
+      <p class="section-subtitle">Former Members</p>
 
       <!-- 历史成员 - 4列，不同高度 -->
       <div
@@ -127,7 +127,7 @@ const props = defineProps<CovenSectionProps>()
 // 成员网格: gap 16px, margin-bottom 24px
 .members-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -139,7 +139,7 @@ const props = defineProps<CovenSectionProps>()
 // Former Members 标题: margin-top 24px, margin-bottom 16px
 .former-title {
   font-size: 14px;
-  color: #D8A1BA;
+  //color: #D8A1BA;
   margin-top: 24px;
   margin-bottom: 16px;
 }

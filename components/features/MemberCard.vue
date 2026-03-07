@@ -52,18 +52,18 @@ const ariaLabel = computed(() => {
       :alt="name"
       class="card-image"
     />
-
+    <!-- 成员信息 - 始终在底部 -->
+    <div class="member-info">
+      <p class="role-text">{{ role }}</p>
+      <h3 class="name-text">{{ name }}</h3>
+    </div>
     <!-- 遮罩层: 默认 #00000066, Hover 时透明 -->
     <div class="mask-layer" />
 
     <!-- 边框: 默认 #A22A55/1px, Hover #FF2F7D/3px -->
     <div class="border-layer" />
 
-    <!-- 成员信息 - 始终在底部 -->
-    <div class="member-info">
-      <p class="role-text">{{ role }}</p>
-      <h3 class="name-text">{{ name }}</h3>
-    </div>
+
   </div>
 
   <!-- 历史成员卡片 -->
@@ -72,7 +72,6 @@ const ariaLabel = computed(() => {
     role="article"
     :aria-label="ariaLabel"
     class="member-card former-member"
-    :style="{ height: height + 'px' }"
   >
     <!-- 黑白图片 -->
     <img
@@ -98,23 +97,26 @@ const ariaLabel = computed(() => {
 </template>
 
 <style scoped lang="scss">
-// 成员卡片基础样式
+// 成员卡片基础样式 - 使用 padding-bottom 技巧实现 4:3 宽高比
 .member-card {
   position: relative;
   overflow: hidden;
   border-radius: 4px;
   cursor: pointer;
   transition: all 180ms ease-out;
+  width: 100%;
+  aspect-ratio: 3/4;
 }
 
 // 当前成员卡片
 .current-member {
-  height: 150px;
-
   .card-image {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform 180ms ease-out;
   }
 
@@ -122,7 +124,7 @@ const ariaLabel = computed(() => {
   .mask-layer {
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.7);
     transition: background-color 180ms ease;
   }
 
@@ -130,7 +132,8 @@ const ariaLabel = computed(() => {
   .border-layer {
     position: absolute;
     inset: 0;
-    border: 1px solid #A22A55;
+    //border: 1px solid #A22A55;
+    border: 1px solid rgba(255, 23, 79, 0.7);
     border-radius: 4px;
     transition: all 180ms ease;
     pointer-events: none;
@@ -143,12 +146,10 @@ const ariaLabel = computed(() => {
     right: 0;
     bottom: 0;
     padding: 12px;
-    z-index: 10;
-
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
     .role-text {
       color: #D6CCEA;
       font-size: 12px;
-      margin-bottom: 2px;
       margin: 0 0 2px 0;
     }
 
@@ -171,7 +172,8 @@ const ariaLabel = computed(() => {
     }
 
     .border-layer {
-      border-color: #FF2F7D;
+      //border-color: #FF2F7D;
+      border-color: #FF174F;
       border-width: 3px;
     }
   }
@@ -180,9 +182,12 @@ const ariaLabel = computed(() => {
 // 历史成员卡片
 .former-member {
   .card-image {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
   }
 
   .grayscale {

@@ -1,21 +1,30 @@
 <script setup lang="ts">
 // ===== V2 设计数据 =====
 import heroBgImg from "@/images/hero_bg.png";
+import memberGuitar from "@/images/member/13.jpeg";
+import memberKey from "@/images/member/keyboard.jpeg";
+import memberBass from "@/images/member/bass.jpeg";
+import memberVocal from "@/images/member/vocal.jpeg";
+import memberDrum from "@/images/member/drum.jpeg";
+import legendImg from "@/images/legend.png";
+
+
 
 // 当前成员数据
 const currentMembers = [
-  { name: '妖精', role: 'Vocal', image: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTA1MTR8&ixlib=rb-4.1.0&q=80&w=1080' },
-  { name: '谎言', role: 'Guitar', image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTA1MTV8&ixlib=rb-4.1.0&q=80&w=1080' },
-  { name: '梦魇', role: 'Drum', image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5Njl8&ixlib=rb-4.1.0&q=80&w=1080' },
-  { name: '深渊', role: 'Bass', image: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzB8&ixlib=rb-4.1.0&q=80&w=1080' },
+  { name: '猫头', role: 'Vocal', image: memberVocal },
+  { name: '千雪', role: 'Keyboard', image: memberKey },
+  { name: '十三', role: 'Guitar', image: memberGuitar },
+  { name: '伯言', role: 'Bass', image: memberBass },
+  { name: 'Sherman', role: 'Drum', image: memberDrum },
 ];
 
 // 历史成员数据
 const formerMembers = [
-  { name: '旧梦', role: 'Former Guitar', image: 'https://images.unsplash.com/photo-1593202301839-1fda01b38456?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI3NDV8&ixlib=rb-4.1.0&q=80&w=1080', height: 130 },
-  { name: '夜鸦', role: 'Former Bass', image: 'https://images.unsplash.com/photo-1574626550228-3fac41f33008?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI3NDV8&ixlib=rb-4.1.0&q=80&w=1080', height: 152 },
-  { name: '祈祷者', role: 'Former Keys', image: 'https://images.unsplash.com/photo-1602408960011-61d979be537e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI3NDZ8&ixlib=rb-4.1.0&q=80&w=1080', height: 130 },
-  { name: '迷雾', role: 'Former Violin', image: 'https://images.unsplash.com/photo-1654048210701-aad73a07cbc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI3NDd8&ixlib=rb-4.1.0&q=80&w=1080', height: 130 },
+  { name: '达达', role: 'Bass', image: '' },
+  { name: '福老师', role: 'Keyboard', image: ''},
+  { name: '九九', role: 'Vocal', image: ''},
+  { name: 'Viki', role: 'Vocal', image: '' },
 ];
 
 // 专辑数据
@@ -36,9 +45,8 @@ const albums = [
 
 // 巡演数据
 const tourDates = [
-  { date: '2026.05.10', city: '上海', venue: 'MAO Livehouse', status: 'onsale' as const, ticketUrl: '#' },
-  { date: '2026.05.18', city: '北京', venue: '疆进酒', status: 'soldout' as const },
-  { date: '2026.06.01', city: '广州', venue: '声音共和', status: 'upcoming' as const },
+  { date: '2026.01.02', city: '上海', venue: '奶油俱乐部', /*status: 'onsale' as const, ticketUrl: '#' */},
+  { date: '2025.09.06', city: '上海', venue: '奶油俱乐部', /*status: 'soldout' as const */},
 ];
 
 // 图集数据
@@ -50,8 +58,7 @@ const galleryImages = [
 
 // 联系信息数据
 const contacts = [
-  { label: 'Management', email: 'management@fairylied.com' },
-  { label: 'Booking', email: 'booking@fairylied.com' },
+  { label: 'Contact Us', email: '' },
 ];
 
 // 社交媒体链接
@@ -73,21 +80,29 @@ useHead({
     <HeroSection
       :background-image="heroBgImg"
       title="Fairy Lied"
-      subtitle="妖精说了谎 · Gothic Metal / Symphonic Metal"
-      description="A dark symphonic journey through lies, fate and salvation."
+      subtitle="妖精说了谎 · Gothic / Symphonic Metal"
+      description=""
       next-section-id="legend"
     />
 
     <!-- ===== THE LEGEND 传说 ===== -->
     <LegendSection
-      image="https://images.unsplash.com/photo-1710050776794-a8d0e35e408b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5Njl8&ixlib=rb-4.1.0&q=80&w=1080"
+      :image="legendImg"
       title="The Legend"
       subtitle="传说"
-      content="妖精说了谎成立于夜色最深处。
-我们以哥特金属的冷峻骨架，叠加交响金属的史诗织体，
-在每一首歌中讲述关于谎言、命运与自我救赎的故事。
+      content="Fairy Lied「妖精说了谎」，2024年组建于上海，一群风格迥异的人类(?)打着哥特金属的旗号暗地里融合自己
+喜欢的曲风私货。
 
-此处为乐队长文介绍占位，建议 100~160 字。"
+Fairy Lied「妖精说了谎」，一支建构残酷故事世界的金属(?)乐队。
+我们讲的不是美梦，而是梦里的裂缝；我们唱的不一定是真的，但也许能动摇你相信的东西。
+
+我们的声音保持着“美女与野兽”式的对位张力：清亮女声如祷告般吟唱幻象，极端嗓音则在一瞬间击碎信仰。
+从哥特金属的冷峻氛围中汲取情绪的阴影，借助力量金属的狂野和交响金属的史诗，将这些幻梦铸造成咒语。
+每一首歌都是一则寓言，但都掺了谎言的毒。
+
+我们不相信真相。“妖精说了谎”不是修辞，是信条。 如果声音能构建梦境，那我们就负责让梦境本身开始说谎。
+
+嘘～，来，听我们说谎"
     />
 
     <!-- ===== THE COVEN 成员阵列 ===== -->

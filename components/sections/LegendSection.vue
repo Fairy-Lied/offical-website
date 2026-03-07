@@ -113,16 +113,11 @@ onUnmounted(() => {
           <div class="image-container">
             <div
               class="parallax-image"
-              :style="{ transform: `translateY(${imageParallax}px)` }"
-            >
-              <img
-                :src="image"
-                alt="Band Legend"
-                class="legend-image"
-                loading="lazy"
-                decoding="async"
-              >
-            </div>
+              :style="{
+                transform: `translateY(${imageParallax}px)`,
+                '--bg-img': `url(${image})`
+              }"
+            />
           </div>
         </div>
 
@@ -184,7 +179,8 @@ onUnmounted(() => {
 .content-wrapper {
   display: flex;
   flex-direction: row;
-  gap: 32px;
+  align-items: center;
+  gap: 15px;
   opacity: 0;
   transform: translateY(24px);
   transition: all 700ms ease-out 200ms;
@@ -196,7 +192,6 @@ onUnmounted(() => {
 }
 
 .image-wrapper {
-  width: 320px;
   flex-shrink: 0;
   opacity: 0;
   transform: translateX(-32px);
@@ -209,22 +204,21 @@ onUnmounted(() => {
 }
 
 .image-container {
-  width: 320px;
-  height: 420px;
+  width: 400px;
+  height: 320px;
   border-radius: 8px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .parallax-image {
   width: 100%;
   height: 120%;
   will-change: transform;
-}
-
-.legend-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background: var(--bg-img) scroll center center transparent;
+  background-size: cover;
 }
 
 .text-wrapper {
@@ -235,6 +229,8 @@ onUnmounted(() => {
   opacity: 0;
   transform: translateX(32px);
   transition: all 700ms ease-out 300ms;
+  border-left: 2px solid #FF174F;
+  padding-left: 15px;
 
   &.is-visible {
     opacity: 1;
@@ -243,7 +239,7 @@ onUnmounted(() => {
 }
 
 .legend-text {
-  font-size: 15px;
+  font-size: 14px;
   color: #C5BDD4;
   line-height: 1.8;
   white-space: pre-line;
