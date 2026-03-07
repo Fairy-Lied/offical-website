@@ -11,7 +11,7 @@ interface TourDate {
   date: string
   city: string
   venue: string
-  status: 'onsale' | 'soldout' | 'upcoming'
+  status?: 'onsale' | 'soldout' | 'upcoming'
   ticketUrl?: string
 }
 
