@@ -21,12 +21,13 @@ interface HeroSectionProps {
   description?: string
   /** 下一章节 ID */
   nextSectionId?: string
+  video?: string
 }
 
 const props = withDefaults(defineProps<HeroSectionProps>(), {
   title: 'Fairy Lied',
-  subtitle: '妖精说了谎 · Gothic / Symphonic Metal',
-  description: 'A dark symphonic journey through lies, fate and salvation.',
+  subtitle: '妖精说了谎',
+  description: '· Gothic / Symphonic Metal',
   nextSectionId: 'legend',
 })
 
@@ -112,6 +113,7 @@ onUnmounted(() => {
         class="parallax-wrapper"
         :style="{ transform: `translateY(${parallaxOffset}px)`, '--heroBgImg': `url(${backgroundImage})` }"
       >
+        <video v-if="video" class="top-video" loop :src="video" muted autoplay preload="auto" />
       </div>
 
       <!-- 渐变遮罩 -->
@@ -198,6 +200,11 @@ onUnmounted(() => {
   background-position: center;
   background-size: cover;
   background-image: var(--heroBgImg);
+  .top-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 // 渐变遮罩

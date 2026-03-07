@@ -7,6 +7,7 @@ import memberBass from "@/images/member/bass.jpeg";
 import memberVocal from "@/images/member/vocal.jpeg";
 import memberDrum from "@/images/member/drum.jpeg";
 import legendImg from "@/images/legend.png";
+import videoSrc from "@/images/vj_1-2.mp4";
 
 
 
@@ -74,9 +75,10 @@ useHead({
     <HeroSection
       :background-image="heroBgImg"
       title="Fairy Lied"
-      subtitle="妖精说了谎 · Gothic / Symphonic Metal"
-      description=""
+      subtitle="妖精说了谎"
+      description="· Gothic / Symphonic Metal"
       next-section-id="legend"
+      :video="videoSrc"
     />
 
     <!-- ===== THE LEGEND 传说 ===== -->
