@@ -1,0 +1,3287 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "FmuBe",
+      "x": 1600,
+      "y": 0,
+      "name": "妖精说了谎-用户体验蓝图v1",
+      "width": 1600,
+      "fill": "#F2F0F5",
+      "layout": "vertical",
+      "gap": 24,
+      "padding": 40,
+      "children": [
+        {
+          "type": "frame",
+          "id": "Inpun",
+          "name": "meta",
+          "width": "fill_container",
+          "fill": "#121018",
+          "cornerRadius": 16,
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "qY41N",
+              "name": "t1",
+              "fill": "#F5EFFF",
+              "content": "妖精说了谎 - 官网用户体验蓝图 v1",
+              "fontFamily": "Inter",
+              "fontSize": 34,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "8Tf5i",
+              "name": "t2",
+              "fill": "#C9B8D9",
+              "content": "风格关键词：Gothic Metal + Symphonic Metal | 目标：将访客转化为听众、现场观众、周边购买者",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "Q3DJN",
+              "name": "chips",
+              "width": "fill_container",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fwHwC",
+                  "name": "c1",
+                  "fill": "#2D233A",
+                  "cornerRadius": 999,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9wZ6o",
+                      "name": "c1t",
+                      "fill": "#E9D8FF",
+                      "content": "Primary CTA: 试听新单曲",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "8YbBp",
+                  "name": "c2",
+                  "fill": "#2D233A",
+                  "cornerRadius": 999,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zqKMg",
+                      "name": "c2t",
+                      "fill": "#E9D8FF",
+                      "content": "Secondary CTA: 巡演购票",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2w8Fo",
+                  "name": "c3",
+                  "fill": "#2D233A",
+                  "cornerRadius": 999,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "toFK0",
+                      "name": "c3t",
+                      "fill": "#E9D8FF",
+                      "content": "Retention: 邮件订阅 + 社媒关注",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rqoVq",
+          "name": "main",
+          "width": "fill_container",
+          "gap": 20,
+          "children": [
+            {
+              "type": "frame",
+              "id": "bMe35",
+              "name": "col1",
+              "width": 500,
+              "fill": "#FFFFFF",
+              "cornerRadius": 14,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "IJPYX",
+                  "name": "h1",
+                  "fill": "#1D1628",
+                  "content": "01 信息架构 (IA)",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "AFdEo",
+                  "name": "b1",
+                  "fill": "#3A2E4C",
+                  "content": "• 首页 Home\n• 音乐 Music（单曲/专辑/歌词）\n• 巡演 Live（场次/城市/票务）\n• 乐队故事 About（成员/世界观）\n• 商店 Store（黑胶/T恤/配件）\n• 媒体 Press（MV/采访/图库）\n• 联系 Contact（商务/演出合作）",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "3LYs5",
+              "name": "col2",
+              "width": 500,
+              "fill": "#FFFFFF",
+              "cornerRadius": 14,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "7rMLA",
+                  "name": "h2",
+                  "fill": "#1D1628",
+                  "content": "02 关键用户旅程",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "949vq",
+                  "name": "b2",
+                  "fill": "#3A2E4C",
+                  "content": "新访客路径：\n社媒/搜索进入 → Hero 听到代表作 → 了解风格与故事 → 进入 Music 深听 → 订阅更新\n\n核心转化路径：\n首页巡演预告 → Live 页查看城市 → 外链购票\n\n高意向路径：\n首页新品周边位 → Store 详情 → 加购/下单",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OQBkR",
+              "name": "col3",
+              "width": 500,
+              "fill": "#FFFFFF",
+              "cornerRadius": 14,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "0VPht",
+                  "name": "h3",
+                  "fill": "#1D1628",
+                  "content": "03 首页低保真结构",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "frame",
+                  "id": "apZUZ",
+                  "name": "m1",
+                  "width": "fill_container",
+                  "fill": "#F6F3FA",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KueM4",
+                      "name": "m1t",
+                      "fill": "#2B1F3A",
+                      "content": "A. Header",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MAe7K",
+                      "name": "m1d",
+                      "fill": "#4A3E5D",
+                      "content": "Logo + 导航（Music / Live / About / Store）+ 语言切换 + CTA",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "vMOno",
+                  "name": "m2",
+                  "width": "fill_container",
+                  "fill": "#EEE7F7",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "idiFA",
+                      "name": "m2t",
+                      "fill": "#2B1F3A",
+                      "content": "B. Hero 首屏",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "kRjmG",
+                      "name": "m2d",
+                      "fill": "#4A3E5D",
+                      "content": "视觉主KV + 标语 + 两个按钮（立即试听 / 查看巡演）+ 平台入口（Spotify/网易云/Apple Music）",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "EXjnF",
+                  "name": "m3",
+                  "width": "fill_container",
+                  "fill": "#F6F3FA",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "osPd7",
+                      "name": "m3t",
+                      "fill": "#2B1F3A",
+                      "content": "C. Music 精选",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Kp9SY",
+                      "name": "m3d",
+                      "fill": "#4A3E5D",
+                      "content": "最新单曲卡 + 专辑滑动区 + 歌词/幕后故事入口",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "QqNj9",
+                  "name": "m4",
+                  "width": "fill_container",
+                  "fill": "#EEE7F7",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "l0Tq8",
+                      "name": "m4t",
+                      "fill": "#2B1F3A",
+                      "content": "D. Live 巡演",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "tLLNR",
+                      "name": "m4d",
+                      "fill": "#4A3E5D",
+                      "content": "最近3场演出（城市/场馆/日期）+ 购票按钮 + 全部场次入口",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "A02mM",
+                  "name": "m5",
+                  "width": "fill_container",
+                  "fill": "#F6F3FA",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yFTXs",
+                      "name": "m5t",
+                      "fill": "#2B1F3A",
+                      "content": "E. Story + Social + Footer",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "CIJef",
+                      "name": "m5d",
+                      "fill": "#4A3E5D",
+                      "content": "乐队世界观简述 + 社媒墙 + 邮件订阅 + 版权与商务联系",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "3uSJ2",
+          "name": "rules",
+          "width": "fill_container",
+          "gap": 20,
+          "children": [
+            {
+              "type": "frame",
+              "id": "HHYLV",
+              "name": "r1",
+              "width": "fill_container",
+              "fill": "#1A1424",
+              "cornerRadius": 14,
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lzKWM",
+                  "name": "r1t",
+                  "fill": "#F6EEFF",
+                  "content": "内容层级优先级（从高到低）",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "PxQLF",
+                  "name": "r1d",
+                  "fill": "#CCB8E1",
+                  "content": "1) 立即听到乐队声音（首屏播放器/平台入口）\n2) 明确近期巡演与购票\n3) 建立品牌世界观与视觉记忆\n4) 引导订阅与社媒沉淀\n5) 最后承接周边销售",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jef0m",
+              "name": "r2",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "cornerRadius": 14,
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "keRtS",
+                  "name": "r2t",
+                  "fill": "#1D1628",
+                  "content": "首版可追踪 UX 指标",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "3H5aN",
+                  "name": "r2d",
+                  "fill": "#3A2E4C",
+                  "content": "• Hero 音乐播放点击率\n• Live 区块点击到票务率\n• 邮件订阅转化率\n• Music 页面平均停留时长\n• 移动端首屏跳出率",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "JTGFC",
+          "name": "next",
+          "width": "fill_container",
+          "fill": "#E8E1F2",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            18,
+            22
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "adSOi",
+              "name": "nextt",
+              "fill": "#221732",
+              "content": "下一步建议",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "LsKuT",
+              "name": "nextd",
+              "fill": "#3E3150",
+              "content": "基于此 UX 蓝图继续做高保真视觉：首页 Hero / Music / Live 三大区块优先，并同步出移动端信息压缩方案。",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 1600,
+      "y": 1368,
+      "name": "妖精说了谎-官网设计v1",
+      "width": 1440,
+      "fill": "#0A0A0F",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "JLFkA",
+          "name": "首屏海报",
+          "metadata": {
+            "type": "unsplash",
+            "username": "chrishardyphotography",
+            "link": "https://unsplash.com/@chrishardyphotography",
+            "author": "Chris Hardy"
+          },
+          "clip": true,
+          "width": "fill_container",
+          "height": 900,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "https://images.unsplash.com/photo-1597635814968-d26d10cebd89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODQ3MzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "mode": "fill"
+          },
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            560,
+            110
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "yqYZQ",
+              "name": "标题",
+              "fill": "#FF6A95",
+              "content": "Fairy Lied",
+              "fontFamily": "Cinzel",
+              "fontSize": 86,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "lX8Wh",
+              "name": "heroAccentV1",
+              "width": 128,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "text",
+              "id": "0duI1",
+              "name": "副标题",
+              "fill": "#D6CCEA",
+              "content": "妖精说了谎  ·  Gothic Metal / Symphonic Metal",
+              "fontFamily": "Inter",
+              "fontSize": 22,
+              "fontWeight": "medium"
+            },
+            {
+              "type": "text",
+              "id": "l8Nf4",
+              "name": "简介",
+              "fill": "#B7ABC8",
+              "content": "在黑潮与月光之间，用交响与失真吉他讲述谎言、命运与救赎。",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "5fQ2f",
+          "name": "成员区",
+          "width": "fill_container",
+          "fill": "#09090E",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            60,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "IHHlP",
+              "name": "secMt",
+              "fill": "#F2EEF8",
+              "content": "The Coven 成员阵列",
+              "fontFamily": "Cinzel",
+              "fontSize": 32,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "eJjBs",
+              "name": "secAccent1",
+              "width": 110,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "text",
+              "id": "SJejB",
+              "name": "curTag",
+              "fill": "#9F95B2",
+              "content": "当前成员 Current Lineup",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "wr56P",
+              "name": "memRow",
+              "width": "fill_container",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "juWJo",
+                  "name": "m1",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "valeria_dg",
+                    "link": "https://unsplash.com/@valeria_dg",
+                    "author": "Valeria Diaz Gallegos"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 180,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1606684595633-bb0f2ed372b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTA0OTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 6,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "dFhZN",
+                      "x": 0,
+                      "y": 0,
+                      "name": "maskDefault1",
+                      "width": 416,
+                      "height": 180,
+                      "fill": "#00000066"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WwO38",
+                      "x": 12,
+                      "y": 12,
+                      "name": "m1t",
+                      "fill": "#CFC5E1",
+                      "content": "Vocal / 妖精\nCurrent Default",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "medium"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "QvTGO",
+                  "name": "m2",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "diane_soko",
+                    "link": "https://unsplash.com/@diane_soko",
+                    "author": "Diane Picchiottino"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 204,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1629276301820-0f3eedc29fd0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTA1MTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 10,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lmvGC",
+                      "name": "m2t",
+                      "fill": "#FFFFFF",
+                      "content": "Guitar / 谎言\nCURRENT HOVER",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "VS1fE",
+                  "name": "m3",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "harrisunsdz",
+                    "link": "https://unsplash.com/@harrisunsdz",
+                    "author": "Harrisun S"
+                  },
+                  "width": "fill_container",
+                  "height": 180,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1768966462232-3e620319f45f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NjR8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "8uQrl",
+                      "name": "m3t",
+                      "fill": "#D2CBE0",
+                      "content": "Drum / 梦魇",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "dDcpl",
+              "name": "hisTitle",
+              "fill": "#DFA6BF",
+              "content": "历史成员 Former Members",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "JJrTY",
+              "name": "hisRow",
+              "width": "fill_container",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "gYQqD",
+                  "name": "h1",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "artchicago",
+                    "link": "https://unsplash.com/@artchicago",
+                    "author": "Art Institute of Chicago"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 120,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1690995873751-fd6e1f0d3326?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI3Mjd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 6,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "gRcYe",
+                      "x": 0,
+                      "y": 0,
+                      "name": "maskFormerDefaultV1",
+                      "width": 416,
+                      "height": 120,
+                      "fill": "#00000077"
+                    },
+                    {
+                      "type": "text",
+                      "id": "kOd3j",
+                      "x": 12,
+                      "y": 10,
+                      "name": "h1t",
+                      "fill": "#9F99AD",
+                      "content": "Former Guitar / 旧梦\nFormer Default",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "gyXu1",
+                      "x": 326,
+                      "y": 10,
+                      "name": "formerBadge1",
+                      "width": 78,
+                      "height": 24,
+                      "fill": "#2A1118",
+                      "cornerRadius": 999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "k0V0w",
+                          "name": "b1t",
+                          "fill": "#FF9BB8",
+                          "content": "FORMER",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "bold"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NEyEk",
+                  "name": "h2",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "mattia19",
+                    "link": "https://unsplash.com/@mattia19",
+                    "author": "Mattia"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 142,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1574767837650-4c92d5b25c7a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI3Mjh8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 10,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Aqv8V",
+                      "x": 0,
+                      "y": 0,
+                      "name": "maskFormerHoverV1",
+                      "width": 416,
+                      "height": 142,
+                      "fill": "#00000066"
+                    },
+                    {
+                      "type": "text",
+                      "id": "5H6Vo",
+                      "x": 14,
+                      "y": 12,
+                      "name": "h2t",
+                      "fill": "#B7B0C8",
+                      "content": "Former Bass / 夜鸦\nFormer Hover",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "5mL9I",
+                      "x": 326,
+                      "y": 10,
+                      "name": "formerBadge2",
+                      "width": 78,
+                      "height": 24,
+                      "fill": "#2A1118",
+                      "cornerRadius": 999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Bv9Pg",
+                          "name": "b2t",
+                          "fill": "#FF9BB8",
+                          "content": "FORMER",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "bold"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Fs1kW",
+                  "name": "h3",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "denisseleon",
+                    "link": "https://unsplash.com/@denisseleon",
+                    "author": "Denisse Leon"
+                  },
+                  "width": "fill_container",
+                  "height": 120,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1585968596599-c216e0d2e8d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI3Mjl8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 6,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "VoBl4",
+                      "x": 0,
+                      "y": 0,
+                      "name": "maskFormerV1Third",
+                      "width": 416,
+                      "height": 120,
+                      "fill": "#00000077"
+                    },
+                    {
+                      "type": "text",
+                      "id": "h0o9y",
+                      "x": 12,
+                      "y": 10,
+                      "name": "h3t",
+                      "fill": "#9F99AD",
+                      "content": "Former Keys / 祈祷者",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Ymwmm",
+                      "x": 326,
+                      "y": 10,
+                      "name": "formerBadge3",
+                      "width": 78,
+                      "height": 24,
+                      "fill": "#2A1118",
+                      "cornerRadius": 999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "BZOWa",
+                          "name": "b3t",
+                          "fill": "#FF9BB8",
+                          "content": "FORMER",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "bold"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "5yBe8",
+          "name": "作品区",
+          "width": "fill_container",
+          "fill": "#0C0C11",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            60,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "qZ3dv",
+              "name": "secDt",
+              "fill": "#F2EEF8",
+              "content": "Discography 作品",
+              "fontFamily": "Cinzel",
+              "fontSize": 32,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "Wx1aO",
+              "name": "secAccent2",
+              "width": 110,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "frame",
+              "id": "Kfybg",
+              "name": "dRow",
+              "width": "fill_container",
+              "gap": 18,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "8bHSt",
+                  "name": "d1",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "marpicek",
+                    "link": "https://unsplash.com/@marpicek",
+                    "author": "Marek Pavlík"
+                  },
+                  "width": "fill_container",
+                  "height": 220,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1728922304651-c13a6c5d5e28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NjV8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "woLh1",
+                      "name": "d1t",
+                      "fill": "#D2CBE0",
+                      "content": "Shadows & Vows (2026)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2pc3n",
+                  "name": "d2",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "edifieer",
+                    "link": "https://unsplash.com/@edifieer",
+                    "author": "Nurlan Imash"
+                  },
+                  "width": "fill_container",
+                  "height": 220,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1632110133476-7af6ea372bf7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "BNRqM",
+                      "name": "d2t",
+                      "fill": "#D2CBE0",
+                      "content": "Cathedral of Ashes (2024)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "e4FTn",
+          "name": "巡演区",
+          "width": "fill_container",
+          "fill": "#09090E",
+          "layout": "vertical",
+          "gap": 14,
+          "padding": [
+            60,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "HtCAh",
+              "name": "secTt",
+              "fill": "#F2EEF8",
+              "content": "On Tour 巡演",
+              "fontFamily": "Cinzel",
+              "fontSize": 32,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "o2y4e",
+              "name": "secAccent3",
+              "width": 110,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "frame",
+              "id": "pHqbB",
+              "name": "tr1",
+              "width": "fill_container",
+              "fill": "#241019",
+              "cornerRadius": 4,
+              "padding": [
+                12,
+                16
+              ],
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "f9eqp",
+                  "name": "tr1t1",
+                  "fill": "#DCD4E8",
+                  "content": "2026.05.10  上海",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "IW9vK",
+                  "name": "tr1t2",
+                  "fill": "#FF2F7D",
+                  "content": "购票",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "tQ2n7",
+              "name": "tr2",
+              "width": "fill_container",
+              "fill": "#241019",
+              "cornerRadius": 4,
+              "padding": [
+                12,
+                16
+              ],
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "KTyJt",
+                  "name": "tr2t1",
+                  "fill": "#DCD4E8",
+                  "content": "2026.05.18  北京",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "eVfwG",
+                  "name": "tr2t2",
+                  "fill": "#FF2F7D",
+                  "content": "购票",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "GvIje",
+          "name": "图集区",
+          "width": "fill_container",
+          "fill": "#0C0C11",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            60,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "qszfH",
+              "name": "secGt",
+              "fill": "#F2EEF8",
+              "content": "Gallery 图集",
+              "fontFamily": "Cinzel",
+              "fontSize": 32,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "Rm6CX",
+              "name": "secAccent4",
+              "width": 110,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "frame",
+              "id": "RDGO1",
+              "name": "gRow",
+              "width": "fill_container",
+              "gap": 14,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "h7HfY",
+                  "name": "g1",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "samulopez",
+                    "link": "https://unsplash.com/@samulopez",
+                    "author": "Samu Lopez"
+                  },
+                  "width": "fill_container",
+                  "height": 140,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1719924338653-e2baca7fb563?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5Njd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 4
+                },
+                {
+                  "type": "frame",
+                  "id": "Ls4bk",
+                  "name": "g2",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "bonelambb",
+                    "link": "https://unsplash.com/@bonelambb",
+                    "author": "Artis Kančs"
+                  },
+                  "width": "fill_container",
+                  "height": 140,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1651178839186-ee733c1e7e4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5Njd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 4
+                },
+                {
+                  "type": "frame",
+                  "id": "oYVux",
+                  "name": "g3",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "liliamaria",
+                    "link": "https://unsplash.com/@liliamaria",
+                    "author": "Lilia Maria"
+                  },
+                  "width": "fill_container",
+                  "height": 140,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1765279185796-d01fcdd71663?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ngcuJ",
+          "name": "联系区",
+          "width": "fill_container",
+          "fill": "#09090E",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": [
+            60,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "fK2IA",
+              "name": "secCt",
+              "fill": "#F2EEF8",
+              "content": "Contact 联系",
+              "fontFamily": "Cinzel",
+              "fontSize": 28,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "CnFW1",
+              "name": "secAccent5",
+              "width": 110,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "text",
+              "id": "1s21a",
+              "name": "secCd",
+              "fill": "#BBB2C9",
+              "content": "Management: mgmt@fairylied.com\nBooking: live@fairylied.com\n© 2026 Fairy Lied",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "WAU6h",
+      "x": 3360,
+      "y": 0,
+      "name": "妖精说了谎-用户体验蓝图v2（参考图）",
+      "width": 1600,
+      "fill": "#0B0A0D",
+      "layout": "vertical",
+      "gap": 18,
+      "padding": 36,
+      "children": [
+        {
+          "type": "frame",
+          "id": "WnnIC",
+          "name": "top",
+          "width": "fill_container",
+          "fill": "#14121A",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            20,
+            22
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "C0xqD",
+              "name": "t1",
+              "fill": "#F1EDF7",
+              "content": "妖精说了谎 - 用户体验蓝图 v2",
+              "fontFamily": "Inter",
+              "fontSize": 30,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "jnyWQ",
+              "name": "t2",
+              "fill": "#BEB3CF",
+              "content": "按参考图重构：黑暗极简、长页面叙事、章节化信息浏览。",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xFDgj",
+          "name": "ia",
+          "width": "fill_container",
+          "fill": "#15131B",
+          "cornerRadius": 10,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            16,
+            18
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "WbiqY",
+              "name": "iaTitle",
+              "fill": "#EFE9FA",
+              "content": "页面导航（单页锚点）",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "ZIE5A",
+              "name": "iaBody",
+              "fill": "#C4B8D7",
+              "content": "The Legend → The Coven → Discography → On Tour → Gallery → Contact\n固定顶部导航 + 锚点滚动 + 当前章节高亮",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "GXxBO",
+          "name": "flow",
+          "width": "fill_container",
+          "fill": "#15131B",
+          "cornerRadius": 10,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            16,
+            18
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "kbKN4",
+              "name": "flowTitle",
+              "fill": "#EFE9FA",
+              "content": "主用户流",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "fCHB5",
+              "name": "flowBody",
+              "fill": "#C4B8D7",
+              "content": "进入首页 -> 被视觉氛围吸引 -> 阅读乐队叙事 -> 浏览成员 -> 听专辑 -> 查看巡演并购票 -> 关注社媒/联系合作",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "bvM3T",
+          "name": "grid",
+          "width": "fill_container",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "R2Hkm",
+              "name": "colA",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "NzQBF",
+                  "name": "s1",
+                  "fill": "#181620",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "bYW0g",
+                      "name": "s1t",
+                      "fill": "#F3EEFF",
+                      "content": "01 The Legend（品牌叙事首屏）",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "VdT1C",
+                      "name": "s1d",
+                      "fill": "#C5BBD6",
+                      "content": "目标：先建立世界观和情绪。\n内容：大图 + 80~120字乐队故事。\n交互：首屏下滑提示、背景缓慢视差。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qbVBC",
+                  "name": "s2",
+                  "fill": "#181620",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Xz3zh",
+                      "name": "s2t",
+                      "fill": "#F3EEFF",
+                      "content": "02 The Coven（成员矩阵）",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MwuDV",
+                      "name": "s2d",
+                      "fill": "#C5BBD6",
+                      "content": "目标：快速识别成员与角色。\n内容：成员卡片网格（头像/艺名/担当）。\n交互：悬浮显示简介，点击进入成员详情。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "D9dcW",
+                  "name": "s5",
+                  "fill": "#181620",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Ia2bT",
+                      "name": "s5t",
+                      "fill": "#F3EEFF",
+                      "content": "05 Gallery（氛围图集）",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UzrdQ",
+                      "name": "s5d",
+                      "fill": "#C5BBD6",
+                      "content": "目标：强化哥特交响视觉气质。\n内容：2~3列图片网格，优先黑白/低饱和。\n交互：点击灯箱放大，支持左右切换。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "V0A0r",
+              "name": "colB",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "gCEUn",
+                  "name": "s3",
+                  "fill": "#181620",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HJv7H",
+                      "name": "s3t",
+                      "fill": "#F3EEFF",
+                      "content": "03 Discography（作品与收听入口）",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Tmlw2",
+                      "name": "s3d",
+                      "fill": "#C5BBD6",
+                      "content": "目标：让用户在30秒内开始听歌。\n内容：专辑列表（封面/曲目/年份/平台按钮）。\n交互：每张专辑可展开曲目，主按钮直达播放平台。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "VyyXo",
+                  "name": "s4",
+                  "fill": "#181620",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ULUIe",
+                      "name": "s4t",
+                      "fill": "#F3EEFF",
+                      "content": "04 On Tour（巡演与购票）",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "3QQUB",
+                      "name": "s4d",
+                      "fill": "#C5BBD6",
+                      "content": "目标：把流量转为票务点击。\n内容：日期/城市/场地/状态/购票按钮表格。\n交互：按地区筛选；售罄显示禁用态。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xVVqb",
+                  "name": "s6",
+                  "fill": "#181620",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mDSaf",
+                      "name": "s6t",
+                      "fill": "#F3EEFF",
+                      "content": "06 Contact（收口与转化）",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "KPv6D",
+                      "name": "s6d",
+                      "fill": "#C5BBD6",
+                      "content": "目标：提供商务合作和粉丝留资入口。\n内容：管理邮箱 + 演出合作邮箱 + 社媒链接 + 订阅。\n交互：表单校验简化，只保留必要字段。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "A7CAz",
+          "name": "mobile",
+          "width": "fill_container",
+          "fill": "#15131B",
+          "cornerRadius": 10,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            16,
+            18
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "RXYC3",
+              "name": "mobileT",
+              "fill": "#EFE9FA",
+              "content": "移动端 UX 适配（必做）",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "7sbZ2",
+              "name": "mobileD",
+              "fill": "#C4B8D7",
+              "content": "• 顶部导航改为汉堡菜单 + 锚点跳转\n• The Coven 卡片改双列/单列渐进\n• Discography 专辑改纵向卡片流\n• On Tour 表格改卡片列表，保留购票按钮\n• Gallery 改2列瀑布流，图片懒加载",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "bxdrx",
+          "name": "kpi",
+          "width": "fill_container",
+          "fill": "#1B1726",
+          "cornerRadius": 10,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            16,
+            18
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "6K7bI",
+              "name": "kpiT",
+              "fill": "#F2ECFF",
+              "content": "对齐参考图后的 UX KPI",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "QFOQG",
+              "name": "kpiD",
+              "fill": "#CCBFE2",
+              "content": "1) 首屏到 Discography 滚动到达率\n2) 专辑平台按钮点击率\n3) On Tour 购票点击率\n4) Contact 区域完成率",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "FjWV0",
+      "x": 3360,
+      "y": 5527,
+      "name": "妖精说了谎-v2交互状态规范",
+      "width": 1500,
+      "fill": "#0B0A10",
+      "layout": "vertical",
+      "gap": 14,
+      "padding": 28,
+      "children": [
+        {
+          "type": "frame",
+          "id": "WiUPH",
+          "name": "v2h",
+          "fill": "#15111F",
+          "cornerRadius": 10,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            16,
+            18
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "tRDJf",
+              "name": "v2ht",
+              "fill": "#F0EBFA",
+              "content": "V2 交互状态规范",
+              "fontFamily": "Cinzel",
+              "fontSize": 30,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "MF48b",
+              "name": "v2hs",
+              "fill": "#BBAFD0",
+              "content": "适用画布：妖精说了谎-官网设计v2",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "zJttt",
+          "name": "v2b1",
+          "fill": "#15111F",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Vk4lB",
+              "name": "v2b1t",
+              "fill": "#D8CFE8",
+              "content": "章节标题装饰线（v2）\n主标题文字统一浅色（#F2EEF8）\n板块标题下划线：#FF174F（2px）\n首屏文章标题可单独强调，不强制下划线",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "N5G3K",
+          "name": "v2b2",
+          "fill": "#15111F",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "eo46w",
+              "name": "v2b2t",
+              "fill": "#D8CFE8",
+              "content": "CTA（购票/播放）\n容器底色：#241019（描边 #FF2F7D）\nCTA 文本：#FF2F7D（Bold）\nHover：保持深底，提升文本亮度与对比",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "SmoJo",
+          "name": "v2b3",
+          "fill": "#15111F",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "gA567",
+              "name": "v2b3t",
+              "fill": "#D8CFE8",
+              "content": "成员区域（4态）\n1. 当前成员-默认：彩色图 + mask #00000066，边框 #A22A55 / 1px\n2. 当前成员-Hover：彩色图（无mask），边框 #FF2F7D / 3px\n3. 历史成员-默认：黑白图 + mask #00000077，文本 #9F99AD\n4. 历史成员-Hover：黑白图 + mask #00000066，文本 #B7B0C8\n动效：颜色/边框过渡 180ms",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WHlHH",
+          "name": "v2b4",
+          "fill": "#15111F",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "HE3rU",
+              "name": "v2b4t",
+              "fill": "#D8CFE8",
+              "content": "动效与可用性\nHover 180ms / Press 120ms / 平滑滚动 400ms\n支持 prefers-reduced-motion：关闭缩放，仅保留颜色变化\n键盘焦点可见；禁用态不可聚焦、不可点击",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "QiqnT",
+          "name": "v2Tokens",
+          "fill": "#15111F",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "OTM7h",
+              "name": "t2a",
+              "fill": "#F0EBFA",
+              "content": "Design Tokens（v2）",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "66C53",
+              "name": "t2b",
+              "fill": "#D8CFE8",
+              "content": "Primary Accent: #FF174F\nCTA Text: #FF2F7D\nTitle Color: #F2EEF8\nFormer Mask: #00000077 / Hover #00000066\nTiming: hover 180ms / press 120ms",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mp7kY",
+          "name": "v2A11y",
+          "fill": "#15111F",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            14
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "jiPVW",
+              "name": "a2t",
+              "fill": "#D8CFE8",
+              "content": "A11y 注记：历史成员卡需保留 'FORMER' 视觉标签；实现时为卡片容器添加 aria-label（如：Former Member - Guitar）。",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "poyT9",
+      "x": 3360,
+      "y": 1368,
+      "name": "妖精说了谎-官网设计v2",
+      "width": 1440,
+      "fill": "#060609",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Pqpl3",
+          "name": "首屏海报",
+          "metadata": {
+            "type": "unsplash",
+            "username": "lkon31",
+            "link": "https://unsplash.com/@lkon31",
+            "author": "K O"
+          },
+          "clip": true,
+          "width": "fill_container",
+          "height": 900,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "https://images.unsplash.com/photo-1696954768014-0372b86e5ce7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODQ3ODZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "mode": "fill"
+          },
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            560,
+            110
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "IFBDp",
+              "name": "t21",
+              "fill": "#FF6A95",
+              "content": "Fairy Lied",
+              "fontFamily": "Cinzel",
+              "fontSize": 86,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "65z1B",
+              "name": "heroAccentV2",
+              "width": 128,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "text",
+              "id": "iACFf",
+              "name": "t22",
+              "fill": "#D6CCEA",
+              "content": "妖精说了谎  ·  Gothic Metal / Symphonic Metal",
+              "fontFamily": "Inter",
+              "fontSize": 22,
+              "fontWeight": "medium"
+            },
+            {
+              "type": "text",
+              "id": "pqk1i",
+              "name": "t23",
+              "fill": "#B7ABC8",
+              "content": "A dark symphonic journey through lies, fate and salvation.",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "0D2F1",
+          "name": "Legend区",
+          "width": "fill_container",
+          "fill": "#07070A",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            72,
+            140
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "rtZ32",
+              "name": "legT",
+              "fill": "#F2EEF8",
+              "content": "The Legend 传说",
+              "fontFamily": "Cinzel",
+              "fontSize": 34,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "OmSK0",
+              "name": "secAccentV2_1",
+              "width": 110,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "frame",
+              "id": "cbh1G",
+              "name": "legBody",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "WwWi1",
+                  "name": "legImg",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "natalievll",
+                    "link": "https://unsplash.com/@natalievll",
+                    "author": "Nataliia Vladimirova"
+                  },
+                  "width": 320,
+                  "height": 420,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1710050776794-a8d0e35e408b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 4
+                },
+                {
+                  "type": "text",
+                  "id": "vvryc",
+                  "name": "legTxt",
+                  "fill": "#C5BDD4",
+                  "content": "妖精说了谎成立于夜色最深处。\n我们以哥特金属的冷峻骨架，叠加交响金属的史诗织体，\n在每一首歌中讲述关于谎言、命运与自我救赎的故事。\n\n此处为乐队长文介绍占位，建议 100~160 字。",
+                  "lineHeight": 1.8,
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uw36f",
+          "name": "Coven区",
+          "width": "fill_container",
+          "fill": "#07070C",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            80,
+            120
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "qG1pz",
+              "name": "covT",
+              "fill": "#F2EEF8",
+              "content": "The Coven 成员阵列",
+              "fontFamily": "Cinzel",
+              "fontSize": 38,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "s8eYF",
+              "name": "secAccentV2_2",
+              "width": 110,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "text",
+              "id": "T3Tsk",
+              "name": "covS",
+              "fill": "#AFA4C4",
+              "content": "Current Lineup",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "BOLLg",
+              "name": "covGrid1",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "aPSId",
+                  "name": "c1",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "starpollen",
+                    "link": "https://unsplash.com/@starpollen",
+                    "author": "Mikita Karasiou"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 150,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1638450793653-0dc8e23f9e34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTA1MTR8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 12,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "dVVTj",
+                      "x": 0,
+                      "y": 0,
+                      "name": "maskCurrentDefaultV2",
+                      "width": 288,
+                      "height": 150,
+                      "fill": "#00000066"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ovrwQ",
+                      "x": 14,
+                      "y": 12,
+                      "name": "c1t",
+                      "fill": "#CBC0DD",
+                      "content": "Vocal\nCurrent Default",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WLUfe",
+                  "name": "c2",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "withpeyman",
+                    "link": "https://unsplash.com/@withpeyman",
+                    "author": "Peyman Shojaei"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 150,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1720097550711-d1a5bfb9dbf9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTA1MTV8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 12,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9vFQh",
+                      "name": "c2t",
+                      "fill": "#FFFFFF",
+                      "content": "Guitar\nCURRENT HOVER",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "89b6A",
+                  "name": "c3",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "davidkimmelossa",
+                    "link": "https://unsplash.com/@davidkimmelossa",
+                    "author": "David Kimmel Ossa"
+                  },
+                  "width": "fill_container",
+                  "height": 150,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1772597228269-08d5d509e16f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 12,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KSPdr",
+                      "name": "c3t",
+                      "fill": "#DED4F3",
+                      "content": "Bass",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zZQNw",
+                  "name": "c4",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "saylabrown",
+                    "link": "https://unsplash.com/@saylabrown",
+                    "author": "Sayla Brown"
+                  },
+                  "width": "fill_container",
+                  "height": 150,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1598932940665-daf3fb2bbb0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzB8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 12,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lDVTS",
+                      "name": "c4t",
+                      "fill": "#DED4F3",
+                      "content": "Drums",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Uopyy",
+              "name": "covGrid2",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "8ein9",
+                  "name": "c5",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "siednji",
+                    "link": "https://unsplash.com/@siednji",
+                    "author": "Siednji Leon"
+                  },
+                  "width": 288,
+                  "height": 150,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1650766940448-49c683a6b9a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzF8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 12,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qvaOh",
+                      "name": "c5t",
+                      "fill": "#DED4F3",
+                      "content": "Keys",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "thGlp",
+                  "name": "c6",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "dannylines",
+                    "link": "https://unsplash.com/@dannylines",
+                    "author": "Danny Lines"
+                  },
+                  "width": 288,
+                  "height": 150,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1626814231895-ad56fff3ef0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 12,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Z1LB4",
+                      "name": "c6t",
+                      "fill": "#DED4F3",
+                      "content": "Violin",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "w2f3U",
+              "name": "hisT2",
+              "fill": "#D8A1BA",
+              "content": "Former Members",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "QGLAY",
+              "name": "hisGrid2",
+              "width": "fill_container",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fvxJ9",
+                  "name": "f1",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "krivitskiy",
+                    "link": "https://unsplash.com/@krivitskiy",
+                    "author": "Alexander Krivitskiy"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 130,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1593202301839-1fda01b38456?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI3NDV8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 12,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "rlAuV",
+                      "x": 0,
+                      "y": 0,
+                      "name": "maskFormerDefaultV2",
+                      "width": 288,
+                      "height": 130,
+                      "fill": "#00000077"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZW0jM",
+                      "x": 14,
+                      "y": 12,
+                      "name": "f1t",
+                      "fill": "#9F99AD",
+                      "content": "Former Vocal\nFormer Default",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "LGN4B",
+                      "x": 198,
+                      "y": 10,
+                      "name": "formerBadge4",
+                      "width": 74,
+                      "height": 22,
+                      "fill": "#2A1118",
+                      "cornerRadius": 999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "M4pfS",
+                          "name": "b4t",
+                          "fill": "#FF9BB8",
+                          "content": "FORMER",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "bold"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2fDB7",
+                  "name": "f2",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "jordanmcdonald",
+                    "link": "https://unsplash.com/@jordanmcdonald",
+                    "author": "Jordan McDonald"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 152,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1574626550228-3fac41f33008?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI3NDV8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 16,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "CEaZg",
+                      "x": 0,
+                      "y": 0,
+                      "name": "maskFormerHoverV2",
+                      "width": 288,
+                      "height": 152,
+                      "fill": "#00000066"
+                    },
+                    {
+                      "type": "text",
+                      "id": "KSzvU",
+                      "x": 16,
+                      "y": 14,
+                      "name": "f2t",
+                      "fill": "#B7B0C8",
+                      "content": "Former Guitar\nFormer Hover",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sW63k",
+                      "x": 198,
+                      "y": 10,
+                      "name": "formerBadge5",
+                      "width": 74,
+                      "height": 22,
+                      "fill": "#2A1118",
+                      "cornerRadius": 999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "BIVh1",
+                          "name": "b5t",
+                          "fill": "#FF9BB8",
+                          "content": "FORMER",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "bold"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "9LgKn",
+                  "name": "f3",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "gaellemarcel",
+                    "link": "https://unsplash.com/@gaellemarcel",
+                    "author": "Gaelle Marcel"
+                  },
+                  "width": "fill_container",
+                  "height": 130,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1602408960011-61d979be537e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI3NDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 12,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "QvlMX",
+                      "x": 0,
+                      "y": 0,
+                      "name": "maskFormerV2Third",
+                      "width": 288,
+                      "height": 130,
+                      "fill": "#00000077"
+                    },
+                    {
+                      "type": "text",
+                      "id": "HwZZb",
+                      "x": 14,
+                      "y": 12,
+                      "name": "f3t",
+                      "fill": "#9F99AD",
+                      "content": "Former Bass",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "rZXCN",
+                      "x": 198,
+                      "y": 10,
+                      "name": "formerBadge6",
+                      "width": 74,
+                      "height": 22,
+                      "fill": "#2A1118",
+                      "cornerRadius": 999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n9GDf",
+                          "name": "b6t",
+                          "fill": "#FF9BB8",
+                          "content": "FORMER",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "bold"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tpTIW",
+                  "name": "f4",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "alexeydemidov",
+                    "link": "https://unsplash.com/@alexeydemidov",
+                    "author": "Alexey Demidov"
+                  },
+                  "width": "fill_container",
+                  "height": 130,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1654048210701-aad73a07cbc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI3NDd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 12,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ZNHRh",
+                      "x": 0,
+                      "y": 0,
+                      "name": "maskFormerV2Fourth",
+                      "width": 288,
+                      "height": 130,
+                      "fill": "#00000077"
+                    },
+                    {
+                      "type": "text",
+                      "id": "9GHjt",
+                      "x": 14,
+                      "y": 12,
+                      "name": "f4t",
+                      "fill": "#9F99AD",
+                      "content": "Former Keys",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "GHxHh",
+                      "x": 198,
+                      "y": 10,
+                      "name": "formerBadge7",
+                      "width": 74,
+                      "height": 22,
+                      "fill": "#2A1118",
+                      "cornerRadius": 999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "FMvdZ",
+                          "name": "b7t",
+                          "fill": "#FF9BB8",
+                          "content": "FORMER",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "bold"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "R8Xxg",
+          "name": "作品区",
+          "width": "fill_container",
+          "fill": "#07070A",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            72,
+            140
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "d56CV",
+              "name": "discT",
+              "fill": "#F2EEF8",
+              "content": "Discography 作品",
+              "fontFamily": "Cinzel",
+              "fontSize": 30,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "aLRWi",
+              "name": "secAccentV2_3",
+              "width": 110,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "frame",
+              "id": "eXAXr",
+              "name": "a1",
+              "width": "fill_container",
+              "fill": "#1F0F17",
+              "cornerRadius": 4,
+              "gap": 18,
+              "padding": 14,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "OH28X",
+                  "name": "a1c",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "8machine_",
+                    "link": "https://unsplash.com/@8machine_",
+                    "author": "8machine _"
+                  },
+                  "width": 180,
+                  "height": 180,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1671509774803-1640e8853b50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 3
+                },
+                {
+                  "type": "text",
+                  "id": "LvluK",
+                  "name": "a1t",
+                  "fill": "#CAC1DB",
+                  "content": "Shadows & Vows (2026)\nTracklist / Streaming Links / Credits",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aw5Mo",
+              "name": "a2",
+              "width": "fill_container",
+              "fill": "#1F0F17",
+              "cornerRadius": 4,
+              "gap": 18,
+              "padding": 14,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "NSfp2",
+                  "name": "a2c",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "k_sariwating",
+                    "link": "https://unsplash.com/@k_sariwating",
+                    "author": "Kaja Sariwating"
+                  },
+                  "width": 180,
+                  "height": 180,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1659904197464-7aa86fcdad9d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzN8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 3
+                },
+                {
+                  "type": "text",
+                  "id": "878Cp",
+                  "name": "a2t",
+                  "fill": "#CAC1DB",
+                  "content": "Cathedral of Ashes (2024)\nTracklist / Streaming Links / Credits",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "6oCYg",
+          "name": "巡演区",
+          "width": "fill_container",
+          "fill": "#060609",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            72,
+            140
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "780Aa",
+              "name": "tourT",
+              "fill": "#F2EEF8",
+              "content": "On Tour 巡演",
+              "fontFamily": "Cinzel",
+              "fontSize": 30,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "q4WZp",
+              "name": "secAccentV2_4",
+              "width": 110,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "frame",
+              "id": "npdbo",
+              "name": "r1",
+              "width": "fill_container",
+              "fill": "#241019",
+              "cornerRadius": 3,
+              "padding": [
+                10,
+                14
+              ],
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "jYhGP",
+                  "name": "r1t1",
+                  "fill": "#D4CBDD",
+                  "content": "2026.05.10  上海  MAO Livehouse",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "SVt5C",
+                  "name": "r1t2",
+                  "fill": "#FF2F7D",
+                  "content": "TICKETS",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "bold"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wOZ7E",
+              "name": "r2",
+              "width": "fill_container",
+              "fill": "#241019",
+              "cornerRadius": 3,
+              "padding": [
+                10,
+                14
+              ],
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "8r9Pd",
+                  "name": "r2t1",
+                  "fill": "#D4CBDD",
+                  "content": "2026.05.18  北京  疆进酒",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "5QmXL",
+                  "name": "r2t2",
+                  "fill": "#FF2F7D",
+                  "content": "TICKETS",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mOauG",
+          "name": "图集区",
+          "width": "fill_container",
+          "fill": "#07070A",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            72,
+            140
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "ckHPF",
+              "name": "galT",
+              "fill": "#F2EEF8",
+              "content": "Gallery 图集",
+              "fontFamily": "Cinzel",
+              "fontSize": 30,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "RdK9R",
+              "name": "secAccentV2_5",
+              "width": 110,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "frame",
+              "id": "mrYYb",
+              "name": "g1",
+              "width": "fill_container",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "iJFvK",
+                  "name": "g1a",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "tannervonnahme",
+                    "link": "https://unsplash.com/@tannervonnahme",
+                    "author": "Tanner Vonnahme"
+                  },
+                  "width": "fill_container",
+                  "height": 140,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1610948843744-7438ca96811a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzR8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 3
+                },
+                {
+                  "type": "frame",
+                  "id": "gQQh9",
+                  "name": "g1b",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "adrienolichon",
+                    "link": "https://unsplash.com/@adrienolichon",
+                    "author": "Adrien Olichon"
+                  },
+                  "width": "fill_container",
+                  "height": 140,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1566291178978-559709ebeece?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzV8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 3
+                },
+                {
+                  "type": "frame",
+                  "id": "lP003",
+                  "name": "g1c",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "henmankk",
+                    "link": "https://unsplash.com/@henmankk",
+                    "author": "Keagan Henman"
+                  },
+                  "width": "fill_container",
+                  "height": 140,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1513180950021-b9ff91bb5e5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzV8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "1Aaux",
+          "name": "联系区",
+          "width": "fill_container",
+          "fill": "#060609",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            80,
+            140
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Gp1Oa",
+              "name": "conT",
+              "fill": "#F2EEF8",
+              "content": "Contact 联系",
+              "fontFamily": "Cinzel",
+              "fontSize": 28,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "frame",
+              "id": "V9U3q",
+              "name": "secAccentV2_6",
+              "width": 110,
+              "height": 2,
+              "fill": "#FF174F"
+            },
+            {
+              "type": "text",
+              "id": "dtDZk",
+              "name": "conD",
+              "fill": "#BEB3CF",
+              "content": "management@fairylied.com\nbooking@fairylied.com\n© 2026 Fairy Lied",
+              "lineHeight": 1.8,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "i1RCf",
+      "x": 1540,
+      "y": 4598,
+      "name": "妖精说了谎-v1交互状态规范",
+      "width": 1500,
+      "fill": "#0F0D15",
+      "layout": "vertical",
+      "gap": 14,
+      "padding": 28,
+      "children": [
+        {
+          "type": "frame",
+          "id": "FFaML",
+          "name": "v1h",
+          "fill": "#171325",
+          "cornerRadius": 10,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            16,
+            18
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "jKRct",
+              "name": "v1ht",
+              "fill": "#F0EBFA",
+              "content": "V1 交互状态规范",
+              "fontFamily": "Cinzel",
+              "fontSize": 30,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "F9wXh",
+              "name": "v1hs",
+              "fill": "#BBAFD0",
+              "content": "适用画布：妖精说了谎-官网设计v1",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "e5CSk",
+          "name": "v1b1",
+          "fill": "#171325",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "hBSMO",
+              "name": "v1b1t",
+              "fill": "#D8CFE8",
+              "content": "章节标题装饰线\n主标题文字统一浅色（#F2EEF8）\n板块标题下划线：#FF174F（2px）\n首屏文章标题可用强调色，不作为统一规则",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "6DAV8",
+          "name": "v1b2",
+          "fill": "#171325",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "iBKu6",
+              "name": "v1b2t",
+              "fill": "#D8CFE8",
+              "content": "主按钮 / CTA（购票）\n容器底色：#241019（描边 #FF2F7D）\nCTA 文本：#FF2F7D（Bold）\nHover：保持深底，提升文本亮度与对比",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "bV4nA",
+          "name": "v1b3",
+          "fill": "#171325",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "m8Ucs",
+              "name": "v1b3t",
+              "fill": "#D8CFE8",
+              "content": "成员区域（4态）\n1. 当前成员-默认：彩色图 + mask #00000066，边框 #A22A55 / 1px\n2. 当前成员-Hover：彩色图（无mask），边框 #FF2F7D / 3px\n3. 历史成员-默认：黑白图 + mask #00000077，文本 #9F99AD\n4. 历史成员-Hover：黑白图 + mask #00000066，文本 #B7B0C8\n动效：颜色/边框过渡 180ms",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "U0aRa",
+          "name": "v1b4",
+          "fill": "#171325",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "AufC1",
+              "name": "v1b4t",
+              "fill": "#D8CFE8",
+              "content": "动效与可用性\nHover 180ms / Press 120ms / 锚点滚动 400ms\n支持 prefers-reduced-motion：关闭缩放，仅保留颜色变化\n键盘焦点：2px 外描边；禁用态不可聚焦、不可点击",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "tabiC",
+          "name": "v1Tokens",
+          "fill": "#171325",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "YYUAC",
+              "name": "t1a",
+              "fill": "#F0EBFA",
+              "content": "Design Tokens（v1）",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "IQwJK",
+              "name": "t1b",
+              "fill": "#D8CFE8",
+              "content": "Primary Accent: #FF174F\nCTA Text: #FF2F7D\nTitle Color: #F2EEF8\nFormer Mask: #00000077 / Hover #00000066\nTiming: hover 180ms / press 120ms",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "KKcc7",
+          "name": "v1A11y",
+          "fill": "#171325",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            14
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Rtado",
+              "name": "a1t",
+              "fill": "#D8CFE8",
+              "content": "A11y 注记：历史成员卡需保留 'FORMER' 视觉标签；实现时为卡片容器添加 aria-label（如：Former Member - Bass）。",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

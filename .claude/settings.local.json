@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Pencil__get_editor_state",
+      "mcp__Pencil__batch_get",
+      "mcp__Pencil__get_guidelines",
+      "mcp__Pencil__batch_design",
+      "mcp__Pencil__snapshot_layout"
+    ]
+  }
+}
