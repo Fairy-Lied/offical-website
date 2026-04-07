@@ -33,55 +33,77 @@ const props = withDefaults(defineProps<MemberCardProps>(), {
 // 生成 A11y 标签
 const ariaLabel = computed(() => {
   return props.isFormer
-    ? `Former Member - ${props.name}, ${props.role}`
-    : `Current Member - ${props.name}, ${props.role}`
+      ? `Former Member - ${props.name}, ${props.role}`
+      : `Current Member - ${props.name}, ${props.role}`
 })
 </script>
 
 <template>
   <!-- 当前成员卡片 -->
   <div
-    v-if="!isFormer"
-    role="article"
-    :aria-label="ariaLabel"
-    class="member-card current-member"
+      v-if="!isFormer"
+      role="article"
+      :aria-label="ariaLabel"
+      class="member-card current-member"
   >
     <!-- 彩色图片 -->
     <img
-      :src="image"
-      :alt="name"
-      class="card-image"
+        v-if="image"
+        :src="image"
+        :alt="name"
+        class="card-image"
     />
+    <!-- 默认头像 -->
+    <div
+        v-else
+        class="card-image default-avatar"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+      </svg>
+    </div>
     <!-- 成员信息 - 始终在底部 -->
     <div class="member-info">
       <p class="role-text">{{ role }}</p>
       <h3 class="name-text">{{ name }}</h3>
     </div>
     <!-- 遮罩层: 默认 #00000066, Hover 时透明 -->
-    <div class="mask-layer" />
+    <div class="mask-layer"/>
 
     <!-- 边框: 默认 #A22A55/1px, Hover #FF2F7D/3px -->
-    <div class="border-layer" />
+    <div class="border-layer"/>
 
 
   </div>
 
   <!-- 历史成员卡片 -->
   <div
-    v-else
-    role="article"
-    :aria-label="ariaLabel"
-    class="member-card former-member"
+      v-else
+      role="article"
+      :aria-label="ariaLabel"
+      class="member-card former-member"
   >
     <!-- 黑白图片 -->
     <img
-      :src="image"
-      :alt="name"
-      class="card-image grayscale"
+        v-if="image"
+        :src="image"
+        :alt="name"
+        class="card-image grayscale"
     />
+    <!-- 默认头像 -->
+    <div
+        v-else
+        class="card-image grayscale default-avatar"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+      </svg>
+    </div>
 
     <!-- 遮罩层: 默认 #00000077, Hover #00000066 -->
-    <div class="former-mask" />
+    <div class="former-mask"/>
 
     <!-- FORMER 标签 -->
     <div class="former-tag" aria-hidden="true">
@@ -132,11 +154,25 @@ const ariaLabel = computed(() => {
   .border-layer {
     position: absolute;
     inset: 0;
-    //border: 1px solid #A22A55;
     border: 1px solid rgba(255, 23, 79, 0.7);
     border-radius: 4px;
     transition: all 180ms ease;
     pointer-events: none;
+  }
+
+  // 默认头像样式
+  .default-avatar {
+    background: linear-gradient(135deg, #2A1118 0%, #1a0a0f 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF9BB8;
+
+    svg {
+      width: 40%;
+      height: 40%;
+      opacity: 0.6;
+    }
   }
 
   // 成员信息
@@ -147,6 +183,7 @@ const ariaLabel = computed(() => {
     bottom: 0;
     padding: 12px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+
     .role-text {
       color: #D6CCEA;
       font-size: 12px;
@@ -172,7 +209,6 @@ const ariaLabel = computed(() => {
     }
 
     .border-layer {
-      //border-color: #FF2F7D;
       border-color: #FF174F;
       border-width: 3px;
     }
@@ -227,7 +263,6 @@ const ariaLabel = computed(() => {
     .former-role {
       color: #9F99AD;
       font-size: 10px;
-      margin-bottom: 2px;
       margin: 0 0 2px 0;
       transition: color 180ms ease;
     }
@@ -264,6 +299,21 @@ const ariaLabel = computed(() => {
 
   .current-member:hover .card-image {
     transform: none;
+  }
+}
+
+// 默认头像样式
+.default-avatar {
+  background: linear-gradient(135deg, #2A1118 0%, #1a0a0f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FF9BB8;
+
+  svg {
+    width: 40%;
+    height: 40%;
+    opacity: 0.6;
   }
 }
 

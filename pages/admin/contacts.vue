@@ -105,7 +105,7 @@ const iconOptions = [
                   />
                   <USelect
                     v-model="social.icon"
-                    :options="iconOptions"
+                    :items="iconOptions"
                     placeholder="选择图标"
                   />
                   <UInput

@@ -1,25 +1,26 @@
 <script setup lang="ts">
 import {format} from 'date-fns'
-import { CalendarDate } from '@internationalized/date'
+import {CalendarDate} from "@internationalized/date";
 
 definePageMeta({
   layout: 'admin',
   middleware: 'admin-auth'
 })
 const toast = useToast()
-const {data: tours, refresh} = await useFetch('/api/tours')
+const {data: toursRaw, refresh} = await useFetch('/api/tours')
+const tours = computed(() => {
+  if (!toursRaw.value) return []
+  return [...toursRaw.value].sort((a: any, b: any) => {
+    // 按日期倒序排列（最新的在前）
+    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  })
+})
 
 const isOpen = ref(false)
 const editingTour = ref<any>(null)
 
 // 日期选择器用的 Date 对象
 const selectedDate = shallowRef()
-
-// 输入框显示的日期字符串
-const dateInputValue = computed(() => {
-  if (!selectedDate.value) return ''
-  return format(selectedDate.value, 'yyyy.MM.dd')
-})
 
 const form = reactive({
   id: null as number | null,
@@ -39,7 +40,6 @@ const statusOptions = [
 
 function openModal(tour?: any) {
   if (tour) {
-    console.log('tour date: ', tour.date)
     editingTour.value = tour
     form.id = tour.id
     form.city = tour.city
@@ -47,8 +47,10 @@ function openModal(tour?: any) {
     form.status = tour.status
     form.ticket_url = tour.ticket_url || ''
     // 将 YYYY.MM.DD 转换为 Date 对象
-    // todo：日期
-    selectedDate.value = new CalendarDate(tour.date)
+    const _year = Number(format(tour.date, 'yyyy'))
+    const _month = Number(format(tour.date, 'M'))
+    const _day = Number(format(tour.date, 'd'))
+    selectedDate.value = new CalendarDate(_year, _month, _day)
   } else {
     editingTour.value = null
     form.id = null
@@ -74,7 +76,6 @@ async function save() {
 
   saving.value = true
 
-  console.log('date: ', selectedDate.value)
   try {
     const dateStr = format(selectedDate.value, 'yyyy.MM.dd')
 
@@ -121,7 +122,7 @@ async function deleteTour(tour: any) {
     })
   }
 }
-
+const inputDate = useTemplateRef('inputDate')
 function getStatusLabel(status: string) {
   const option = statusOptions.find(o => o.value === status)
   return option?.label || status
@@ -207,28 +208,46 @@ function getStatusColor(status: string) {
             </h3>
 
             <UForm @submit.prevent="save" class="space-y-4">
-              <UFormField label="演出日期" required>
-                <UInputDate ref="inputDate" v-model="selectedDate"></UInputDate>
+              <UFormField label="演出日期" required class="w-full">
+                <UInputDate ref="inputDate" v-model="selectedDate">
+                  <template #trailing>
+                    <UPopover :reference="inputDate?.inputsRef[3]?.$el">
+                      <UButton
+                          color="neutral"
+                          variant="link"
+                          size="sm"
+                          icon="i-lucide-calendar"
+                          aria-label="Select a date"
+                          class="px-0"
+                      />
+
+                      <template #content>
+                        <UCalendar v-model="selectedDate" variant="subtle" class="p-2" />
+                      </template>
+                    </UPopover>
+                  </template>
+                </UInputDate>
               </UFormField>
 
-              <UFormField label="城市" required>
-                <UInput v-model="form.city" placeholder="如：上海"/>
+              <UFormField label="城市" required class="w-full">
+                <UInput v-model="form.city" placeholder="如：上海" class="w-full" />
               </UFormField>
 
-              <UFormField label="场地" required>
-                <UInput v-model="form.venue" placeholder="如：奶油俱乐部"/>
+              <UFormField label="场地" required class="w-full">
+                <UInput v-model="form.venue" placeholder="如：奶油俱乐部" class="w-full"/>
               </UFormField>
 
-              <UFormField label="票务状态" required>
+              <UFormField label="票务状态" required class="w-full">
                 <USelect
                     v-model="form.status"
                     :items="statusOptions"
                     option-attribute="label"
+                    class="w-full"
                 />
               </UFormField>
 
-              <UFormField label="购票链接">
-                <UInput v-model="form.ticket_url" placeholder="https://..."/>
+              <UFormField label="购票链接" class="w-full">
+                <UInput v-model="form.ticket_url" placeholder="https://..." class="w-full" />
               </UFormField>
             </UForm>
 

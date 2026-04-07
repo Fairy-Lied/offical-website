@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import {zh_cn} from "@nuxt/ui/locale";
+
 // 获取当前路由
 const route = useRoute()
 
@@ -60,7 +62,7 @@ useHead({
 
       <!-- 主要内容 -->
       <main :class="isAdminPage ? '' : 'relative z-10'">
-        <UApp>
+        <UApp :locale="zh_cn">
           <NuxtPage/>
         </UApp>
       </main>

@@ -26,7 +26,14 @@ function openModal(album?: any) {
     form.title = album.title
     form.year = album.year
     form.cover = album.cover || ''
-    form.tracks = [...(album.tracks || [])]
+    // 处理 tracks 数据格式（后端返回对象数组，需要提取 title）
+    const tracksData = album.tracks
+    if (Array.isArray(tracksData)) {
+      // 如果是对象数组，提取 title；如果是字符串数组，直接使用
+      form.tracks = tracksData.map((t: any) => typeof t === 'string' ? t : t.title)
+    } else {
+      form.tracks = []
+    }
   } else {
     editingAlbum.value = null
     form.id = null
