@@ -10,12 +10,12 @@ interface NavItem {
 
 // 导航项配置
 const navItems: NavItem[] = [
-  { id: 'legend', label: '传说', labelEn: 'The Legend' },
-  { id: 'coven', label: '成员', labelEn: 'The Coven' },
-  { id: 'discography', label: '作品', labelEn: 'Discography' },
-  { id: 'tour', label: '巡演', labelEn: 'On Tour' },
-  { id: 'gallery', label: '图集', labelEn: 'Gallery' },
-  { id: 'contact', label: '联系', labelEn: 'Contact' },
+  { id: 'legend', label: '传说', labelEn: 'The Legend ' },
+  { id: 'coven', label: '成员', labelEn: 'The Coven ' },
+  { id: 'discography', label: '作品', labelEn: 'Discography ' },
+  { id: 'tour', label: '演出', labelEn: 'On Tour ' },
+  { id: 'gallery', label: '图集', labelEn: 'Gallery ' },
+  { id: 'contact', label: '联系', labelEn: 'Contact ' },
 ]
 
 // 响应式状态
@@ -147,7 +147,7 @@ useEventListener(window, 'resize', handleResize)
             :class="{ 'is-active': activeSection === item.id }"
             @click="scrollToSection(item.id)"
           >
-            <span>{{ item.labelEn }}</span>
+            <span>{{ item.labelEn }}{{item.label}}</span>
             <!-- 激活指示器 -->
             <span class="nav-indicator" />
           </button>

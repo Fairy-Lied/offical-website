@@ -293,6 +293,8 @@ onUnmounted(() => {
   background: none;
   border: none;
   padding: 0;
+  box-shadow: 0 0 10px rgba(255, 23, 79, 1);
+  border-radius: 100%;
 
   &.animate-bounce {
     animation: bounce 2s infinite;
