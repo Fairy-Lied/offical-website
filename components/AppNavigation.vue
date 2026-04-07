@@ -1,6 +1,5 @@
 <script setup lang="ts">
 // ===== 导航组件 =====
-import { useEventListener } from '@vueuse/core'
 
 interface NavItem {
   id: string
@@ -91,10 +90,18 @@ const checkMotionPreference = () => {
   isReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
+// 监听窗口大小变化，重置移动端菜单
+const handleResize = () => {
+  if (window.innerWidth >= 768) {
+    isMobileMenuOpen.value = false
+  }
+}
+
 // 生命周期
 onMounted(() => {
   checkMotionPreference()
   window.addEventListener('scroll', handleScroll, { passive: true })
+  window.addEventListener('resize', handleResize)
 
   // 等待 DOM 渲染完成后设置 observer
   nextTick(() => {
@@ -104,19 +111,11 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', handleResize)
   if (observer) {
     observer.disconnect()
   }
 })
-
-// 监听窗口大小变化，重置移动端菜单
-const handleResize = () => {
-  if (window.innerWidth >= 768) {
-    isMobileMenuOpen.value = false
-  }
-}
-
-useEventListener(window, 'resize', handleResize)
 </script>
 
 <template>

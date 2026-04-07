@@ -3,6 +3,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/ui', '@nuxtjs/tailwindcss'],
   css: ['~/assets/css/main.css'],
+  ui: {
+    prefix: 'U',
+    colorMode: {
+      preference: 'light',
+      fallback: 'light'
+    }
+  },
   components: [
     {
       path: '~/components',

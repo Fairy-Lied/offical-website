@@ -10,7 +10,6 @@
  * - A11y：焦点管理、ARIA属性
  */
 
-import { useEventListener, useScrollLock } from '@vueuse/core'
 
 interface GalleryImage {
   id: string
@@ -74,7 +73,7 @@ function close() {
 }
 
 // 键盘导航
-useEventListener('keydown', (e: KeyboardEvent) => {
+const handleKeydown = (e: KeyboardEvent) => {
   if (!isOpen.value) return
 
   switch (e.key) {
@@ -88,16 +87,24 @@ useEventListener('keydown', (e: KeyboardEvent) => {
       goToNext()
       break
   }
-})
+}
 
 // 锁定背景滚动
-const body = ref<HTMLElement | null>(null)
-onMounted(() => {
-  body.value = document.body
-})
-const isLocked = useScrollLock(body)
 watch(isOpen, (open) => {
-  isLocked.value = open
+  if (open) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
+})
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+  document.body.style.overflow = ''
 })
 
 // 图片加载状态

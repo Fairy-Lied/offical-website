@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "title": "Fairy Lied",
+    "subtitle": "妖精说了谎",
+    "description": "· Gothic / Symphonic Metal",
+    "backgroundImage": "/images/hero_bg.png",
+    "video": "/images/vj_1-2.mp4"
+  },
+  "legend": {
+    "title": "The Legend",
+    "subtitle": "传说",
+    "image": "/images/legend.png",
+    "content": "Fairy Lied「妖精说了谎」，2024年组建于上海，一群风格迥异的人类(?)打着哥特金属的旗号暗地里融合自己喜欢的曲风私货。\n\nFairy Lied「妖精说了谎」，一支建构残酷故事世界的金属(?)乐队。\n我们讲的不是美梦，而是梦里的裂缝；我们唱的不一定是真的，但也许能动摇你相信的东西。\n\n我们的声音保持着"美女与野兽"式的对位张力：清亮女声如祷告般吟唱幻象，极端嗓音则在一瞬间击碎信仰。\n从哥特金属的冷峻氛围中汲取情绪的阴影，借助力量金属的狂野和交响金属的史诗，将这些幻梦铸造成咒语。\n每一首歌都是一则寓言，但都掺了谎言的毒。\n\n我们不相信真相。"妖精说了谎"不是修辞，是信条。 如果声音能构建梦境，那我们就负责让梦境本身开始说谎。\n\n嘘～，来，听我们说谎"
+  },
+  "members": {
+    "current": [
+      { "id": "1", "name": "猫头", "role": "Vocal", "image": "/images/member/vocal.jpeg" },
+      { "id": "2", "name": "千雪", "role": "Keyboard", "image": "/images/member/keyboard.jpeg" },
+      { "id": "3", "name": "十三", "role": "Guitar", "image": "/images/member/13.jpeg" },
+      { "id": "4", "name": "伯言", "role": "Bass", "image": "/images/member/bass.jpeg" },
+      { "id": "5", "name": "Sherman", "role": "Drum", "image": "/images/member/drum.jpeg" }
+    ],
+    "former": [
+      { "id": "6", "name": "达达", "role": "Bass", "image": "" },
+      { "id": "7", "name": "福老师", "role": "Keyboard", "image": "" },
+      { "id": "8", "name": "九九", "role": "Vocal", "image": "" },
+      { "id": "9", "name": "Viki", "role": "Vocal", "image": "" }
+    ]
+  },
+  "albums": [
+    {
+      "id": "1",
+      "title": "Shadows & Vows",
+      "year": "2026",
+      "cover": "https://images.unsplash.com/photo-1671509774803-1640e8853b50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+      "tracks": ["Prologue: The Fallen", "Shadows & Vows", "Cathedral of Lies", "Eternal Night", "Whispers in the Dark"]
+    }
+  ],
+  "tours": [
+    { "id": "1", "date": "2026.01.02", "city": "上海", "venue": "奶油俱乐部", "status": "onsale", "ticketUrl": "#" },
+    { "id": "2", "date": "2025.09.06", "city": "上海", "venue": "奶油俱乐部", "status": "soldout", "ticketUrl": "" }
+  ],
+  "gallery": [
+    { "id": "1", "url": "https://images.unsplash.com/photo-1610948843744-7438ca96811a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzR8&ixlib=rb-4.1.0&q=80&w=1080", "alt": "演出照片1" },
+    { "id": "2", "url": "https://images.unsplash.com/photo-1566291178978-559709ebeece?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzV8&ixlib=rb-4.1.0&q=80&w=1080", "alt": "演出照片2" },
+    { "id": "3", "url": "https://images.unsplash.com/photo-1513180950021-b9ff91bb5e5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI5NzV8&ixlib=rb-4.1.0&q=80&w=1080", "alt": "演出照片3" }
+  ],
+  "contacts": {
+    "email": "",
+    "socials": [
+      { "platform": "Weibo", "url": "#", "icon": "simple-icons:sinaweibo" },
+      { "platform": "Bilibili", "url": "#", "icon": "simple-icons:bilibili" },
+      { "platform": "NetEase", "url": "#", "icon": "simple-icons:neteasecloudmusic" }
+    ]
+  }
+}
