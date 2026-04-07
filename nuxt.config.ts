@@ -4,7 +4,10 @@ export default defineNuxtConfig({
     modules: ['@nuxt/ui', 'nuxt-auth-utils'],
     css: ['~/assets/css/main.css'],
     auth: {
-        secret: process.env.NUXT_AUTH_SECRET || 'fairylied-secret-key-2024'
+        secret: process.env.NUXT_AUTH_SECRET || 'fairylied-secret-key-2024',
+        session: {
+            maxAge: 60 * 60 * 24 * 7 // 7天
+        }
     },
     ui: {
         colorMode: true,
