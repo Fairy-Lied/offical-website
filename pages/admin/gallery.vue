@@ -1,10 +1,11 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'admin'
+  layout: 'admin',
+  middleware: 'admin-auth'
 })
 
 const toast = useToast()
-const { data: gallery, refresh } = await useFetch('/api/gallery')
+const {data: gallery, refresh} = await useFetch('/api/gallery')
 
 const isOpen = ref(false)
 const editingImage = ref<any>(null)
@@ -41,14 +42,14 @@ async function save() {
     })
     toast.add({
       title: editingImage.value ? '更新成功' : '添加成功',
-      color: 'green'
+      color: 'success'
     })
     isOpen.value = false
     refresh()
   } catch (error) {
     toast.add({
       title: '操作失败',
-      color: 'red'
+      color: 'error'
     })
   } finally {
     saving.value = false
@@ -64,13 +65,13 @@ async function deleteImage(image: any) {
     })
     toast.add({
       title: '删除成功',
-      color: 'green'
+      color: 'success'
     })
     refresh()
   } catch (error) {
     toast.add({
       title: '删除失败',
-      color: 'red'
+      color: 'error'
     })
   }
 }
@@ -91,12 +92,12 @@ async function uploadImage(event: Event) {
     form.url = result.url
     toast.add({
       title: '上传成功',
-      color: 'green'
+      color: 'success'
     })
   } catch (error) {
     toast.add({
       title: '上传失败',
-      color: 'red'
+      color: 'error'
     })
   }
 }
@@ -109,7 +110,7 @@ async function uploadImage(event: Event) {
         <h2 class="text-2xl font-bold text-white">图集管理</h2>
         <p class="text-gray-400 mt-1">管理网站图集展示的图片</p>
       </div>
-      <UButton color="red" icon="i-heroicons-plus" @click="openModal()">
+      <UButton icon="i-heroicons-plus" @click="openModal()">
         添加图片
       </UButton>
     </div>
@@ -117,32 +118,32 @@ async function uploadImage(event: Event) {
     <!-- 瀑布流布局 -->
     <div class="masonry-grid">
       <AdminCard
-        v-for="image in gallery"
-        :key="image.id"
-        class="masonry-item group overflow-hidden"
+          v-for="image in gallery"
+          :key="image.id"
+          class="masonry-item group overflow-hidden"
       >
         <div class="relative overflow-hidden">
           <img
-            :src="image.url"
-            class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
-            :alt="image.alt"
-            loading="lazy"
+              :src="image.url"
+              class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+              :alt="image.alt"
+              loading="lazy"
           />
           <!-- 悬停遮罩 -->
-          <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+          <div
+              class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
             <UButton
-              color="gray"
-              variant="solid"
-              icon="i-heroicons-pencil"
-              size="sm"
-              @click="openModal(image)"
+                variant="solid"
+                icon="i-heroicons-pencil"
+                size="sm"
+                @click="openModal(image)"
             />
             <UButton
-              color="red"
-              variant="solid"
-              icon="i-heroicons-trash"
-              size="sm"
-              @click="deleteImage(image)"
+                color="error"
+                variant="solid"
+                icon="i-heroicons-trash"
+                size="sm"
+                @click="deleteImage(image)"
             />
           </div>
         </div>
@@ -154,58 +155,60 @@ async function uploadImage(event: Event) {
     </div>
 
     <!-- 编辑弹窗 -->
-    <UModal v-model="isOpen" :ui="{ width: 'sm:max-w-md' }">
-      <AdminCard class="w-full">
-        <div class="p-6">
-          <h3 class="text-lg font-semibold text-white mb-4">
-            {{ editingImage ? '编辑图片' : '添加图片' }}
-          </h3>
+    <UModal v-model:open="isOpen" :ui="{ width: 'sm:max-w-md' }">
+      <template #content>
+        <AdminCard class="w-full">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-4">
+              {{ editingImage ? '编辑图片' : '添加图片' }}
+            </h3>
 
-          <form @submit.prevent="save" class="space-y-4">
-            <UFormGroup label="图片" required>
-              <div class="space-y-2">
-                <UInput v-model="form.url" placeholder="图片URL" />
-                <div class="flex items-center gap-4">
-                  <UButton
-                    type="button"
-                    color="gray"
-                    variant="soft"
-                    @click="$refs.imageInput?.click()"
-                  >
-                    上传图片
-                  </UButton>
-                  <input
-                    ref="imageInput"
-                    type="file"
-                    accept="image/*"
-                    class="hidden"
-                    @change="uploadImage"
+            <UForm @submit.prevent="save" class="space-y-4">
+              <UFormField label="图片" required>
+                <div class="space-y-2">
+                  <UInput v-model="form.url" placeholder="图片URL"/>
+                  <div class="flex items-center gap-4">
+                    <UButton
+                        type="button"
+                        color="neutral"
+                        variant="soft"
+                        @click="$refs.imageInput?.click()"
+                    >
+                      上传图片
+                    </UButton>
+                    <input
+                        ref="imageInput"
+                        type="file"
+                        accept="image/*"
+                        class="hidden"
+                        @change="uploadImage"
+                    />
+                  </div>
+                  <img
+                      v-if="form.url"
+                      :src="form.url"
+                      class="h-32 w-auto rounded border border-gray-600"
+                      alt="预览"
                   />
                 </div>
-                <img
-                  v-if="form.url"
-                  :src="form.url"
-                  class="h-32 w-auto rounded border border-gray-600"
-                  alt="预览"
-                />
-              </div>
-            </UFormGroup>
+              </UFormField>
 
-            <UFormGroup label="描述">
-              <UInput v-model="form.alt" placeholder="图片描述" />
-            </UFormGroup>
-          </form>
+              <UFormField label="描述">
+                <UInput v-model="form.alt" placeholder="图片描述"/>
+              </UFormField>
+            </UForm>
 
-          <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-700">
-            <UButton color="gray" variant="soft" @click="isOpen = false">
-              取消
-            </UButton>
-            <UButton color="red" :loading="saving" @click="save">
-              保存
-            </UButton>
+            <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-700">
+              <UButton color="error" variant="soft" @click="isOpen = false">
+                取消
+              </UButton>
+              <UButton :loading="saving" @click="save">
+                保存
+              </UButton>
+            </div>
           </div>
-        </div>
-      </AdminCard>
+        </AdminCard>
+      </template>
     </UModal>
   </div>
 </template>

@@ -1,0 +1,49 @@
+/**
+ * Section 统一样式
+ * 所有前台板块共享的样式
+ */
+
+/* ===== 容器 ===== */
+.section-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 140px;
+}
+
+/* ===== 章节标题 ===== */
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #F2EEF8;
+  margin-bottom: 12px;
+}
+
+/* 红色分隔线 */
+.red-line {
+  width: 110px;
+  height: 2px;
+  background-color: #FF174F;
+}
+
+/* ===== 响应式 - 平板 ===== */
+@media (max-width: 1024px) {
+  .section-container {
+    padding: 0 80px;
+  }
+}
+
+/* ===== 响应式 - 移动端 ===== */
+@media (max-width: 768px) {
+  .section-container {
+    padding: 0 32px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+}

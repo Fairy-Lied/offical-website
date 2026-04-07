@@ -12,12 +12,12 @@ useHead({
     {
       name: "description",
       content:
-        "Fairy Lied 妖精说了谎 - 歌特金属、交响金属、力量金属乐队官方网站。",
+          "Fairy Lied 妖精说了谎 - 歌特金属、交响金属、力量金属乐队官方网站。",
     },
     {
       name: "keywords",
       content:
-        "Fairy Lied, 妖精说了谎, 歌特金属, 交响金属, 力量金属, band, music",
+          "Fairy Lied, 妖精说了谎, 歌特金属, 交响金属, 力量金属, band, music",
     },
   ],
   htmlAttrs: {
@@ -55,12 +55,14 @@ useHead({
         </div>
 
         <!-- 导航栏 - 仅前台页面显示 -->
-        <AppNavigation />
+        <AppNavigation/>
       </template>
 
       <!-- 主要内容 -->
       <main :class="isAdminPage ? '' : 'relative z-10'">
-        <NuxtPage />
+        <UApp>
+          <NuxtPage/>
+        </UApp>
       </main>
     </div>
   </NuxtLayout>

@@ -1,46 +1,62 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: 'admin'
-})
+import {format} from 'date-fns'
+import { CalendarDate } from '@internationalized/date'
 
+definePageMeta({
+  layout: 'admin',
+  middleware: 'admin-auth'
+})
 const toast = useToast()
-const { data: tours, refresh } = await useFetch('/api/tours')
+const {data: tours, refresh} = await useFetch('/api/tours')
 
 const isOpen = ref(false)
 const editingTour = ref<any>(null)
+
+// 日期选择器用的 Date 对象
+const selectedDate = shallowRef()
+
+// 输入框显示的日期字符串
+const dateInputValue = computed(() => {
+  if (!selectedDate.value) return ''
+  return format(selectedDate.value, 'yyyy.MM.dd')
+})
 
 const form = reactive({
   id: null as number | null,
   date: '',
   city: '',
   venue: '',
-  status: 'onsale' as 'onsale' | 'soldout' | 'upcoming',
+  status: 'onsale' as 'onsale' | 'soldout' | 'upcoming' | 'ended',
   ticket_url: ''
 })
 
 const statusOptions = [
-  { label: '售票中', value: 'onsale' },
-  { label: '已售罄', value: 'soldout' },
-  { label: '即将开售', value: 'upcoming' }
+  {label: '售票中', value: 'onsale'},
+  {label: '已售罄', value: 'soldout'},
+  {label: '即将开售', value: 'upcoming'},
+  {label: '已结束', value: 'ended'}
 ]
 
 function openModal(tour?: any) {
   if (tour) {
+    console.log('tour date: ', tour.date)
     editingTour.value = tour
     form.id = tour.id
-    form.date = tour.date
     form.city = tour.city
     form.venue = tour.venue
     form.status = tour.status
     form.ticket_url = tour.ticket_url || ''
+    // 将 YYYY.MM.DD 转换为 Date 对象
+    // todo：日期
+    selectedDate.value = new CalendarDate(tour.date)
   } else {
     editingTour.value = null
     form.id = null
-    form.date = ''
     form.city = ''
     form.venue = ''
     form.status = 'onsale'
     form.ticket_url = ''
+    selectedDate.value = null
   }
   isOpen.value = true
 }
@@ -48,22 +64,38 @@ function openModal(tour?: any) {
 const saving = ref(false)
 
 async function save() {
+  if (!selectedDate.value) {
+    toast.add({
+      title: '请选择演出日期',
+      color: 'error'
+    })
+    return
+  }
+
   saving.value = true
+
+  console.log('date: ', selectedDate.value)
   try {
+    const dateStr = format(selectedDate.value, 'yyyy.MM.dd')
+
+    const submitData = {
+      ...form,
+      date: dateStr
+    }
     await $fetch('/api/tours', {
       method: 'POST',
-      body: form
+      body: submitData
     })
     toast.add({
       title: editingTour.value ? '更新成功' : '添加成功',
-      color: 'green'
+      color: 'success'
     })
     isOpen.value = false
     refresh()
   } catch (error) {
     toast.add({
       title: '操作失败',
-      color: 'red'
+      color: 'error'
     })
   } finally {
     saving.value = false
@@ -79,13 +111,13 @@ async function deleteTour(tour: any) {
     })
     toast.add({
       title: '删除成功',
-      color: 'green'
+      color: 'success'
     })
     refresh()
   } catch (error) {
     toast.add({
       title: '删除失败',
-      color: 'red'
+      color: 'error'
     })
   }
 }
@@ -97,10 +129,16 @@ function getStatusLabel(status: string) {
 
 function getStatusColor(status: string) {
   switch (status) {
-    case 'onsale': return 'green'
-    case 'soldout': return 'red'
-    case 'upcoming': return 'blue'
-    default: return 'gray'
+    case 'onsale':
+      return 'primary'
+    case 'soldout':
+      return 'error'
+    case 'upcoming':
+      return 'info'
+    case 'ended':
+      return 'neutral'
+    default:
+      return 'info'
   }
 }
 </script>
@@ -112,7 +150,7 @@ function getStatusColor(status: string) {
         <h2 class="text-2xl font-bold text-white">巡演管理</h2>
         <p class="text-gray-400 mt-1">管理乐队演出日程和票务信息</p>
       </div>
-      <UButton color="red" icon="i-heroicons-plus" @click="openModal()">
+      <UButton icon="i-heroicons-plus" @click="openModal()">
         添加演出
       </UButton>
     </div>
@@ -141,18 +179,17 @@ function getStatusColor(status: string) {
 
             <div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
               <UButton
-                color="gray"
-                variant="ghost"
-                icon="i-heroicons-pencil"
-                size="sm"
-                @click="openModal(tour)"
+                  variant="ghost"
+                  icon="i-heroicons-pencil"
+                  size="sm"
+                  @click="openModal(tour)"
               />
               <UButton
-                color="red"
-                variant="ghost"
-                icon="i-heroicons-trash"
-                size="sm"
-                @click="deleteTour(tour)"
+                  color="error"
+                  variant="ghost"
+                  icon="i-heroicons-trash"
+                  size="sm"
+                  @click="deleteTour(tour)"
               />
             </div>
           </div>
@@ -161,49 +198,51 @@ function getStatusColor(status: string) {
     </div>
 
     <!-- 编辑弹窗 -->
-    <UModal v-model="isOpen" :ui="{ width: 'sm:max-w-lg' }">
-      <AdminCard class="w-full">
-        <div class="p-6">
-          <h3 class="text-lg font-semibold text-white mb-4">
-            {{ editingTour ? '编辑演出' : '添加演出' }}
-          </h3>
+    <UModal v-model:open="isOpen" :ui="{ width: 'sm:max-w-md' }">
+      <template #content>
+        <AdminCard class="w-full">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-4">
+              {{ editingTour ? '编辑演出' : '添加演出' }}
+            </h3>
 
-          <form @submit.prevent="save" class="space-y-4">
-            <UFormGroup label="演出日期" required>
-              <UInput v-model="form.date" placeholder="如：2026.01.02" />
-            </UFormGroup>
+            <UForm @submit.prevent="save" class="space-y-4">
+              <UFormField label="演出日期" required>
+                <UInputDate ref="inputDate" v-model="selectedDate"></UInputDate>
+              </UFormField>
 
-            <UFormGroup label="城市" required>
-              <UInput v-model="form.city" placeholder="如：上海" />
-            </UFormGroup>
+              <UFormField label="城市" required>
+                <UInput v-model="form.city" placeholder="如：上海"/>
+              </UFormField>
 
-            <UFormGroup label="场地" required>
-              <UInput v-model="form.venue" placeholder="如：奶油俱乐部" />
-            </UFormGroup>
+              <UFormField label="场地" required>
+                <UInput v-model="form.venue" placeholder="如：奶油俱乐部"/>
+              </UFormField>
 
-            <UFormGroup label="票务状态" required>
-              <USelect
-                v-model="form.status"
-                :options="statusOptions"
-                option-attribute="label"
-              />
-            </UFormGroup>
+              <UFormField label="票务状态" required>
+                <USelect
+                    v-model="form.status"
+                    :items="statusOptions"
+                    option-attribute="label"
+                />
+              </UFormField>
 
-            <UFormGroup label="购票链接">
-              <UInput v-model="form.ticket_url" placeholder="https://..." />
-            </UFormGroup>
-          </form>
+              <UFormField label="购票链接">
+                <UInput v-model="form.ticket_url" placeholder="https://..."/>
+              </UFormField>
+            </UForm>
 
-          <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-700">
-            <UButton color="gray" variant="soft" @click="isOpen = false">
-              取消
-            </UButton>
-            <UButton color="red" :loading="saving" @click="save">
-              保存
-            </UButton>
+            <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-700">
+              <UButton color="error" variant="soft" @click="isOpen = false">
+                取消
+              </UButton>
+              <UButton :loading="saving" @click="save">
+                保存
+              </UButton>
+            </div>
           </div>
-        </div>
-      </AdminCard>
+        </AdminCard>
+      </template>
     </UModal>
   </div>
 </template>

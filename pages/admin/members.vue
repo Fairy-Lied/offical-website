@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'admin'
+  layout: 'admin',
+  middleware: 'admin-auth'
 })
 
 const toast = useToast()
@@ -50,14 +51,14 @@ async function save() {
     })
     toast.add({
       title: editingMember.value ? '更新成功' : '添加成功',
-      color: 'green'
+      color: 'success'
     })
     isOpen.value = false
     refresh()
   } catch (error) {
     toast.add({
       title: '操作失败',
-      color: 'red'
+      color: 'error'
     })
   } finally {
     saving.value = false
@@ -73,13 +74,13 @@ async function deleteMember(member: any) {
     })
     toast.add({
       title: '删除成功',
-      color: 'green'
+      color: 'success'
     })
     refresh()
   } catch (error) {
     toast.add({
       title: '删除失败',
-      color: 'red'
+      color: 'error'
     })
   }
 }
@@ -100,12 +101,12 @@ async function uploadImage(event: Event) {
     form.image = result.url
     toast.add({
       title: '上传成功',
-      color: 'green'
+      color: 'success'
     })
   } catch (error) {
     toast.add({
       title: '上传失败',
-      color: 'red'
+      color: 'error'
     })
   }
 }
@@ -121,7 +122,7 @@ const formerMembers = computed(() => members.value?.former || [])
         <h2 class="text-2xl font-bold text-white">成员管理</h2>
         <p class="text-gray-400 mt-1">管理乐队现任成员和历史成员</p>
       </div>
-      <UButton color="red" icon="i-heroicons-plus" @click="openModal()">
+      <UButton icon="i-heroicons-plus" @click="openModal()">
         添加成员
       </UButton>
     </div>
@@ -143,14 +144,13 @@ const formerMembers = computed(() => members.value?.former || [])
             </div>
             <div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
               <UButton
-                  color="gray"
                   variant="ghost"
                   icon="i-heroicons-pencil"
                   size="xs"
                   @click="openModal(member)"
               />
               <UButton
-                  color="red"
+                  color="error"
                   variant="ghost"
                   icon="i-heroicons-trash"
                   size="xs"
@@ -179,16 +179,15 @@ const formerMembers = computed(() => members.value?.former || [])
             </div>
             <div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
               <UButton
-                  color="gray"
                   variant="ghost"
                   icon="i-heroicons-pencil"
                   size="xs"
                   @click="openModal(member)"
               />
               <UButton
-                  color="red"
                   variant="ghost"
                   icon="i-heroicons-trash"
+                  color="error"
                   size="xs"
                   @click="deleteMember(member)"
               />
@@ -200,67 +199,68 @@ const formerMembers = computed(() => members.value?.former || [])
     </div>
 
     <!-- 编辑弹窗 -->
-    <UModal v-model="isOpen" :ui="{ width: 'sm:max-w-md' }">
-      <AdminCard class="w-full">
-        <div class="p-6">
-          <h3 class="text-lg font-semibold text-white mb-4">
-            {{ editingMember ? '编辑成员' : '添加成员' }}
-          </h3>
+    <UModal v-model:open="isOpen" :ui="{ width: 'sm:max-w-md' }">
+      <template #content>
+        <AdminCard class="w-full">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-4">
+              {{ editingMember ? '编辑成员' : '添加成员' }}
+            </h3>
 
-          <form @submit.prevent="save" class="space-y-4">
-            <UFormGroup label="姓名" required>
-              <UInput v-model="form.name" placeholder="成员姓名"/>
-            </UFormGroup>
+            <UForm @submit.prevent="save" class="space-y-4">
+              <UFormField label="姓名" required class="w-full">
+                <UInput v-model="form.name" placeholder="成员姓名" class="w-full"/>
+              </UFormField>
 
-            <UFormGroup label="角色/职位" required>
-              <UInput v-model="form.role" placeholder="如：Vocal, Guitar, Drum"/>
-            </UFormGroup>
+              <UFormField label="角色/职位" required class="w-full">
+                <UInput v-model="form.role" placeholder="如：Vocal, Guitar, Drum" class="w-full"/>
+              </UFormField>
 
-            <UFormGroup label="照片">
-              <div class="space-y-2">
-                <UInput v-model="form.image" placeholder="图片URL"/>
-                <div class="flex items-center gap-4">
-                  <UButton
-                      type="button"
-                      color="gray"
-                      variant="soft"
-                      size="sm"
-                      @click="$refs.memberImageInput?.click()"
-                  >
-                    上传照片
-                  </UButton>
-                  <input
-                      ref="memberImageInput"
-                      type="file"
-                      accept="image/*"
-                      class="hidden"
-                      @change="uploadImage"
-                  />
-                  <img
-                      v-if="form.image"
-                      :src="form.image"
-                      class="h-12 w-12 rounded-full object-cover border border-gray-600"
-                      alt="预览"
-                  />
+              <UFormField label="照片" class="w-full">
+                <div class="space-y-2">
+                  <UInput v-model="form.image" placeholder="图片URL" class="w-full"/>
+                  <div class="flex items-center gap-4">
+                    <UButton
+                        type="button"
+                        variant="soft"
+                        size="sm"
+                        @click="$refs.memberImageInput?.click()"
+                    >
+                      上传照片
+                    </UButton>
+                    <input
+                        ref="memberImageInput"
+                        type="file"
+                        accept="image/*"
+                        class="hidden"
+                        @change="uploadImage"
+                    />
+                    <img
+                        v-if="form.image"
+                        :src="form.image"
+                        class="h-12 w-12 rounded-full object-cover border border-gray-600"
+                        alt="预览"
+                    />
+                  </div>
                 </div>
-              </div>
-            </UFormGroup>
+              </UFormField>
 
-            <UFormGroup>
-              <UCheckbox v-model="form.is_current" label="现任成员"/>
-            </UFormGroup>
-          </form>
+              <UFormField class="w-full">
+                <UCheckbox v-model="form.is_current" label="现任成员"/>
+              </UFormField>
+            </UForm>
 
-          <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-700">
-            <UButton color="gray" variant="soft" @click="isOpen = false">
-              取消
-            </UButton>
-            <UButton color="red" :loading="saving" @click="save">
-              保存
-            </UButton>
+            <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-700">
+              <UButton color="gray" variant="soft" @click="isOpen = false">
+                取消
+              </UButton>
+              <UButton color="red" :loading="saving" @click="save">
+                保存
+              </UButton>
+            </div>
           </div>
-        </div>
-      </AdminCard>
+        </AdminCard>
+      </template>
     </UModal>
   </div>
 </template>

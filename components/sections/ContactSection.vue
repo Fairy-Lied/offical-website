@@ -38,7 +38,7 @@ const props = withDefaults(defineProps<ContactSectionProps>(), {
     class="contact-section"
     aria-labelledby="contact-title"
   >
-    <div class="container">
+    <div class="section-container">
       <!-- 章节标题 -->
       <div class="section-header">
         <h2 id="contact-title" class="section-title">
@@ -100,11 +100,7 @@ const props = withDefaults(defineProps<ContactSectionProps>(), {
   background-color: #060609;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 140px;
-}
+/* 使用全局 .section-container */
 
 // 标题区: margin-bottom 8px (设计稿 gap: 8)
 .section-header {
@@ -179,17 +175,12 @@ const props = withDefaults(defineProps<ContactSectionProps>(), {
 
 // 响应式 - 平板
 @media (max-width: 1024px) {
-  .container {
-    padding: 0 80px;
-  }
+  // 使用全局响应式
 }
 
 // 响应式 - 移动端
 @media (max-width: 768px) {
-  .container {
-    padding: 0 32px;
-  }
-
+  // 使用全局响应式
   .section-title {
     font-size: 26px;
   }

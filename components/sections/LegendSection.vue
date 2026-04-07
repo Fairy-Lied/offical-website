@@ -94,7 +94,7 @@ onUnmounted(() => {
     ref="sectionRef"
     class="legend-section"
   >
-    <div class="container">
+    <div class="section-container">
       <!-- 章节标题 -->
       <div
         class="section-header"
@@ -139,11 +139,7 @@ onUnmounted(() => {
   background-color: #07070A;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 140px;
-}
+/* 使用全局 .section-container */
 
 .section-header {
   margin-bottom: 24px;
@@ -249,17 +245,12 @@ onUnmounted(() => {
 
 // 响应式 - 平板
 @media (max-width: 1024px) {
-  .container {
-    padding: 0 80px;
-  }
+  // 使用全局响应式
 }
 
 // 响应式 - 移动端
 @media (max-width: 768px) {
-  .container {
-    padding: 0 32px;
-  }
-
+  // 使用全局响应式
   .section-title {
     font-size: 26px;
   }

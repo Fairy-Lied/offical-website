@@ -1,10 +1,11 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'admin'
+  layout: 'admin',
+  middleware: 'admin-auth'
 })
 
 const toast = useToast()
-const { data: hero, refresh } = await useFetch('/api/hero')
+const {data: hero, refresh} = await useFetch('/api/hero')
 
 const form = reactive({
   title: '',
@@ -36,14 +37,14 @@ async function save() {
     toast.add({
       title: '保存成功',
       description: 'Hero 首屏信息已更新',
-      color: 'green'
+      color: 'success'
     })
     refresh()
   } catch (error) {
     toast.add({
       title: '保存失败',
       description: '请稍后重试',
-      color: 'red'
+      color: 'error'
     })
   } finally {
     saving.value = false
@@ -66,13 +67,13 @@ async function uploadImage(field: 'background_image' | 'video', event: Event) {
     form[field] = result.url
     toast.add({
       title: '上传成功',
-      color: 'green'
+      color: 'success'
     })
   } catch (error) {
     toast.add({
       title: '上传失败',
       description: '请检查文件格式和大小',
-      color: 'red'
+      color: 'error'
     })
   }
 }
@@ -87,90 +88,87 @@ async function uploadImage(field: 'background_image' | 'video', event: Event) {
 
     <AdminCard class="max-w-2xl">
       <div class="p-6">
-        <form @submit.prevent="save" class="space-y-6">
-          <UFormGroup label="主标题" required>
-            <UInput v-model="form.title" placeholder="Fairy Lied" />
-          </UFormGroup>
+        <UForm @submit.prevent="save" class="space-y-6">
+          <UFormField label="主标题" required class="w-full">
+            <UInput v-model="form.title" placeholder="Fairy Lied" class="w-full"/>
+          </UFormField>
 
-          <UFormGroup label="副标题" required>
-            <UInput v-model="form.subtitle" placeholder="妖精说了谎" />
-          </UFormGroup>
+          <UFormField label="副标题" required class="w-full">
+            <UInput v-model="form.subtitle" placeholder="妖精说了谎" class="w-full"/>
+          </UFormField>
 
-          <UFormGroup label="描述文字" required>
-            <UInput v-model="form.description" placeholder="· Gothic / Symphonic Metal" />
-          </UFormGroup>
+          <UFormField label="描述文字" required class="w-full">
+            <UInput v-model="form.description" placeholder="· Gothic / Symphonic Metal" class="w-full"/>
+          </UFormField>
 
-          <UFormGroup label="背景图片">
+          <UFormField label="背景图片" class="w-full">
             <div class="space-y-2">
-              <UInput v-model="form.background_image" placeholder="/images/hero_bg.png" />
+              <UInput v-model="form.background_image" placeholder="/images/hero_bg.png" class="w-full"/>
               <div class="flex items-center gap-4">
                 <UButton
-                  type="button"
-                  color="gray"
-                  variant="soft"
-                  icon="i-heroicons-photo"
-                  @click="$refs.bgInput?.click()"
+                    type="button"
+                    variant="soft"
+                    icon="i-heroicons-photo"
+                    @click="$refs.bgInput?.click()"
                 >
                   上传图片
                 </UButton>
                 <input
-                  ref="bgInput"
-                  type="file"
-                  accept="image/*"
-                  class="hidden"
-                  @change="uploadImage('background_image', $event)"
+                    ref="bgInput"
+                    type="file"
+                    accept="image/*"
+                    class="hidden"
+                    @change="uploadImage('background_image', $event)"
                 />
                 <img
-                  v-if="form.background_image"
-                  :src="form.background_image"
-                  class="h-16 w-auto rounded border border-gray-600"
-                  alt="预览"
+                    v-if="form.background_image"
+                    :src="form.background_image"
+                    class="h-16 w-auto rounded border border-gray-600"
+                    alt="预览"
                 />
               </div>
             </div>
-          </UFormGroup>
+          </UFormField>
 
-          <UFormGroup label="背景视频">
+          <UFormField label="背景视频" class="w-full">
             <div class="space-y-2">
-              <UInput v-model="form.video" placeholder="/images/vj_1-2.mp4" />
+              <UInput v-model="form.video" placeholder="/images/vj_1-2.mp4" class="w-full"/>
               <UButton
-                type="button"
-                color="gray"
-                variant="soft"
-                icon="i-heroicons-video-camera"
-                @click="$refs.videoInput?.click()"
+                  type="button"
+                  variant="soft"
+                  icon="i-heroicons-video-camera"
+                  @click="$refs.videoInput?.click()"
               >
                 上传视频
               </UButton>
               <input
-                ref="videoInput"
-                type="file"
-                accept="video/*"
-                class="hidden"
-                @change="uploadImage('video', $event)"
+                  ref="videoInput"
+                  type="file"
+                  accept="video/*"
+                  class="hidden"
+                  @change="uploadImage('video', $event)"
               />
             </div>
-          </UFormGroup>
+          </UFormField>
 
           <div class="flex justify-end gap-3 pt-4 border-t border-gray-700">
             <UButton
-              type="button"
-              color="gray"
-              variant="soft"
-              @click="refresh()"
+                type="button"
+                variant="soft"
+                color="error"
+                @click="refresh()"
             >
               重置
             </UButton>
             <UButton
-              type="submit"
-              color="red"
-              :loading="saving"
-              icon="i-heroicons-check"
+                type="submit"
+                :loading="saving"
+                icon="i-heroicons-check"
             >
               保存更改
             </UButton>
           </div>
-        </form>
+        </UForm>
       </div>
     </AdminCard>
   </div>

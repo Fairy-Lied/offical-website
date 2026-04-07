@@ -1,12 +1,9 @@
-<script setup lang="ts">
-// 强制使用浅色模式
-definePageMeta({
-  colorMode: 'light'
-})
+<script setup>
+// 后台布局 - 强制深色模式
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100">
+  <div class="min-h-screen bg-[#0a0a0c] text-gray-100">
     <slot />
   </div>
 </template>

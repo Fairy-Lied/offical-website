@@ -30,7 +30,7 @@ const props = defineProps<CovenSectionProps>()
     class="coven-section"
     aria-labelledby="coven-title"
   >
-    <div class="container">
+    <div class="section-container" style="padding: 0 120px;">
       <!-- 章节标题 -->
       <div class="section-header">
         <h2 id="coven-title" class="section-title">
@@ -96,11 +96,7 @@ const props = defineProps<CovenSectionProps>()
   background-color: #07070C;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 120px;
-}
+/* 使用全局 .section-container，但 Coven 使用 120px padding */
 
 .section-header {
   margin-bottom: 24px;
@@ -148,15 +144,15 @@ const props = defineProps<CovenSectionProps>()
 
 // 响应式 - 平板: Coven区设计稿 120px -> 80px
 @media (max-width: 1024px) {
-  .container {
-    padding: 0 80px;
+  .section-container {
+    padding: 0 80px !important;
   }
 }
 
 // 响应式 - 移动端: 统一 32px
 @media (max-width: 768px) {
-  .container {
-    padding: 0 32px;
+  .section-container {
+    padding: 0 32px !important;
   }
 
   .section-title {

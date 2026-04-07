@@ -1,10 +1,11 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'admin'
+  layout: 'admin',
+  middleware: 'admin-auth'
 })
 
 const toast = useToast()
-const { data: legend, refresh } = await useFetch('/api/legend')
+const {data: legend, refresh} = await useFetch('/api/legend')
 
 const form = reactive({
   title: '',
@@ -34,14 +35,14 @@ async function save() {
     toast.add({
       title: '保存成功',
       description: 'Legend 传说信息已更新',
-      color: 'green'
+      color: 'success'
     })
     refresh()
   } catch (error) {
     toast.add({
       title: '保存失败',
       description: '请稍后重试',
-      color: 'red'
+      color: 'error'
     })
   } finally {
     saving.value = false
@@ -64,13 +65,13 @@ async function uploadImage(event: Event) {
     form.image = result.url
     toast.add({
       title: '上传成功',
-      color: 'green'
+      color: 'success'
     })
   } catch (error) {
     toast.add({
       title: '上传失败',
       description: '请检查文件格式和大小',
-      color: 'red'
+      color: 'error'
     })
   }
 }
@@ -85,73 +86,73 @@ async function uploadImage(event: Event) {
 
     <AdminCard class="max-w-3xl">
       <div class="p-6">
-        <form @submit.prevent="save" class="space-y-6">
-          <UFormGroup label="英文标题" required>
-            <UInput v-model="form.title" placeholder="The Legend" />
-          </UFormGroup>
+        <UForm @submit.prevent="save" class="space-y-6">
+          <UFormField label="英文标题" required class="w-full">
+            <UInput v-model="form.title" placeholder="The Legend" class="w-full"/>
+          </UFormField>
 
-          <UFormGroup label="中文副标题" required>
-            <UInput v-model="form.subtitle" placeholder="传说" />
-          </UFormGroup>
+          <UFormField label="中文副标题" required class="w-full">
+            <UInput v-model="form.subtitle" placeholder="传说" class="w-full"/>
+          </UFormField>
 
-          <UFormGroup label="配图">
+          <UFormField label="配图" class="w-full">
             <div class="space-y-2">
-              <UInput v-model="form.image" placeholder="/images/legend.png" />
+              <UInput v-model="form.image" placeholder="/images/legend.png" class="w-full"/>
               <div class="flex items-center gap-4">
                 <UButton
-                  type="button"
-                  color="gray"
-                  variant="soft"
-                  icon="i-heroicons-photo"
-                  @click="$refs.imageInput?.click()"
+                    type="button"
+                    variant="soft"
+                    icon="i-heroicons-photo"
+                    @click="$refs.imageInput?.click()"
                 >
                   上传图片
                 </UButton>
                 <input
-                  ref="imageInput"
-                  type="file"
-                  accept="image/*"
-                  class="hidden"
-                  @change="uploadImage"
+                    ref="imageInput"
+                    type="file"
+                    accept="image/*"
+                    class="hidden"
+                    @change="uploadImage"
                 />
                 <img
-                  v-if="form.image"
-                  :src="form.image"
-                  class="h-20 w-auto rounded border border-gray-600"
-                  alt="预览"
+                    v-if="form.image"
+                    :src="form.image"
+                    class="h-20 w-auto rounded border border-gray-600"
+                    alt="预览"
                 />
               </div>
             </div>
-          </UFormGroup>
+          </UFormField>
 
-          <UFormGroup label="介绍内容" required>
+          <UFormField label="介绍内容" required class="w-full">
             <UTextarea
-              v-model="form.content"
-              :rows="12"
-              placeholder="输入乐队介绍内容..."
-            />
+                v-model="form.content"
+                :rows="12"
+                placeholder="输入乐队介绍内容..."
+                class="w-full"
+            >
+            </UTextarea>
             <p class="text-xs text-gray-400 mt-1">支持换行，每段之间空一行</p>
-          </UFormGroup>
+          </UFormField>
 
-          <div class="flex justify-end gap-3 pt-4 border-t border-gray-700">
+          <div class="flex justify-end gap-3 pt-4 border-t border-gray-700 w-full">
             <UButton
-              type="button"
-              color="gray"
-              variant="soft"
-              @click="refresh()"
+                type="button"
+                color="error"
+                variant="soft"
+                @click="refresh()"
             >
               重置
             </UButton>
             <UButton
-              type="submit"
-              color="red"
-              :loading="saving"
-              icon="i-heroicons-check"
+                type="submit"
+                :loading="saving"
+                icon="i-heroicons-check"
             >
               保存更改
             </UButton>
           </div>
-        </form>
+        </UForm>
       </div>
     </AdminCard>
   </div>

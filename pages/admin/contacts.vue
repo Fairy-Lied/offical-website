@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'admin'
+  layout: 'admin',
+  middleware: 'admin-auth'
 })
 
 const toast = useToast()
@@ -30,13 +31,13 @@ async function save() {
     })
     toast.add({
       title: '保存成功',
-      color: 'green'
+      color: 'success'
     })
     refresh()
   } catch (error) {
     toast.add({
       title: '保存失败',
-      color: 'red'
+      color: 'error'
     })
   } finally {
     saving.value = false
@@ -82,15 +83,15 @@ const iconOptions = [
     <AdminCard class="max-w-2xl">
       <div class="p-6">
         <form @submit.prevent="save" class="space-y-6">
-          <UFormGroup label="联系邮箱">
+          <UFormField label="联系邮箱">
             <UInput
               v-model="email"
               type="email"
               placeholder="contact@fairylied.com"
             />
-          </UFormGroup>
+          </UFormField>
 
-          <UFormGroup label="社交媒体">
+          <UFormField label="社交媒体">
             <div class="space-y-4">
               <div
                 v-for="(social, index) in socials"
@@ -113,7 +114,7 @@ const iconOptions = [
                   />
                 </div>
                 <UButton
-                  color="red"
+                  color="error"
                   variant="ghost"
                   icon="i-heroicons-trash"
                   @click="removeSocial(index)"
@@ -122,7 +123,6 @@ const iconOptions = [
 
               <UButton
                 type="button"
-                color="gray"
                 variant="soft"
                 icon="i-heroicons-plus"
                 @click="addSocial"
@@ -130,12 +130,12 @@ const iconOptions = [
                 添加社交媒体
               </UButton>
             </div>
-          </UFormGroup>
+          </UFormField>
 
           <div class="flex justify-end gap-3 pt-4 border-t border-gray-700">
             <UButton
               type="button"
-              color="gray"
+              color="error"
               variant="soft"
               @click="refresh()"
             >
@@ -143,7 +143,6 @@ const iconOptions = [
             </UButton>
             <UButton
               type="submit"
-              color="red"
               :loading="saving"
               icon="i-heroicons-check"
             >
