@@ -71,7 +71,7 @@ function isExpanded(albumTitle: string): boolean {
           <!-- 信息 -->
           <div class="album-info">
             <h3 class="album-title">
-              {{ album.title }} ({{ album.year }})
+              {{ album.title }}<template v-if="album.year"> ({{ album.year }})</template>
             </h3>
 
             <!-- 展开/收起的曲目列表 -->

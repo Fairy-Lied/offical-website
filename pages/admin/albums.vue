@@ -200,7 +200,7 @@ async function handleCoverUpload(event: Event) {
                 <UInput v-model="form.title" placeholder="专辑名称" class="w-full"/>
               </UFormField>
 
-              <UFormField label="发行年份" required class="w-full">
+              <UFormField label="发行年份" class="w-full">
                 <UInput v-model="form.year" placeholder="如：2026" class="w-full"/>
               </UFormField>
 
