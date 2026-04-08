@@ -1,0 +1,48 @@
+# GitHub Actions - 同步到阿里云 CodeUp
+# 当代码推送到 GitHub 时，自动同步到 CodeUp
+
+name: Sync to CodeUp
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取所有历史记录
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 配置 Git 用户
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: 同步到 CodeUp
+        env:
+          # 需要在 GitHub Secrets 中配置 CODEUP_TOKEN
+          # 获取方式：CodeUp 仓库设置 -> Access Token -> 创建令牌
+          CODEUP_REPO: https://oauth2:${{ secrets.CODEUP_TOKEN }}@codeup.aliyun.com/dreamarium/fairy_lied/offical-website.git
+        run: |
+          echo "🚀 开始同步到 CodeUp..."
+
+          # 添加 CodeUp 为远程仓库
+          git remote add codeup "$CODEUP_REPO" || git remote set-url codeup "$CODEUP_REPO"
+
+          # 推送所有分支
+          echo "📤 推送分支到 CodeUp..."
+          git push codeup --all --force
+
+          # 推送所有标签
+          echo "📤 推送标签到 CodeUp..."
+          git push codeup --tags --force
+
+          echo "✅ 同步完成！"
