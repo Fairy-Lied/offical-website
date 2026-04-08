@@ -25,3 +25,4 @@ logs
 
 supabase/migrations
 .vercel
+public/uploads
