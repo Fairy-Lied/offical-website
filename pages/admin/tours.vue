@@ -27,13 +27,14 @@ const form = reactive({
   date: '',
   city: '',
   venue: '',
-  status: 'onsale' as 'onsale' | 'soldout' | 'upcoming' | 'ended',
+  status: 'onsale' as 'onsale' | 'soldout' | 'upcoming' | 'ended' | 'free',
   ticket_url: ''
 })
 
 const statusOptions = [
   {label: '售票中', value: 'onsale'},
   {label: '已售罄', value: 'soldout'},
+  {label: '免票', value: 'free'},
   {label: '即将开售', value: 'upcoming'},
   {label: '已结束', value: 'ended'}
 ]
@@ -134,6 +135,8 @@ function getStatusColor(status: string) {
       return 'primary'
     case 'soldout':
       return 'error'
+    case 'free':
+      return 'success'
     case 'upcoming':
       return 'info'
     case 'ended':

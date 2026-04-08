@@ -11,7 +11,7 @@ interface TourDate {
   date: string
   city: string
   venue: string
-  status?: 'onsale' | 'soldout' | 'upcoming'
+  status?: 'onsale' | 'soldout' | 'upcoming' | 'ended' | 'free'
   ticketUrl?: string
 }
 
@@ -26,18 +26,23 @@ function getStatusText(status: TourDate['status']): string {
   const statusMap: Record<string, string> = {
     onsale: '购票',
     soldout: '售罄',
+    free: '免票',
     upcoming: '即将开售',
+    ended: '已结束'
   }
   return statusMap[status] || ''
 }
 
 // 获取状态样式
 function getStatusClasses(status: TourDate['status']): string {
-  if (status === 'soldout') {
+  if (status === 'soldout' || status === 'ended') {
     return 'text-[#9F99AD] cursor-not-allowed'
   }
   if (status === 'upcoming') {
     return 'text-[#9F95B2]'
+  }
+  if (status === 'free') {
+    return 'text-[#4ADE80] cursor-default'
   }
   return 'text-[#FF2F7D] hover:text-[#FF6A95] cursor-pointer'
 }
