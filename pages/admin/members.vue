@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { uploadImage } from '~/utils/upload'
+
 definePageMeta({
   layout: 'admin',
   middleware: 'admin-auth'
@@ -85,27 +87,27 @@ async function deleteMember(member: any) {
   }
 }
 
-async function uploadImage(event: Event) {
+async function handleImageUpload(event: Event) {
   const input = event.target as HTMLInputElement
   const file = input.files?.[0]
   if (!file) return
 
-  const formData = new FormData()
-  formData.append('file', file)
-
   try {
-    const result = await $fetch('/api/upload', {
-      method: 'POST',
-      body: formData
-    })
+    const result = await uploadImage(file)
+
+    if (!result.success) {
+      throw new Error(result.error)
+    }
+
     form.image = result.url
     toast.add({
       title: '上传成功',
       color: 'success'
     })
-  } catch (error) {
+  } catch (error: any) {
     toast.add({
       title: '上传失败',
+      description: error.message || '请检查文件格式和大小',
       color: 'error'
     })
   }
@@ -233,7 +235,7 @@ const formerMembers = computed(() => members.value?.former || [])
                         type="file"
                         accept="image/*"
                         class="hidden"
-                        @change="uploadImage"
+                        @change="handleImageUpload"
                     />
                     <img
                         v-if="form.image"
