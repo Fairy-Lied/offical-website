@@ -56,6 +56,11 @@ export default defineNuxtConfig({
             ],
             link: [
                 {
+                    rel: 'icon',
+                    type: 'image/x-icon',
+                    href: '/favicon.ico'
+                },
+                {
                     rel: 'stylesheet',
                     href: 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap'
                 }
