@@ -1,6 +1,4 @@
-import { writeFile } from 'fs/promises'
-import { resolve } from 'path'
-import { mkdir } from 'fs/promises'
+import { useSupabase } from '~/server/utils/supabase'
 
 export default defineEventHandler(async (event) => {
   try {
@@ -17,23 +15,40 @@ export default defineEventHandler(async (event) => {
     const filename = file.filename || `upload-${Date.now()}`
     const uniqueName = `${Date.now()}-${filename}`
 
-    // Ensure uploads directory exists
-    const uploadsDir = resolve(process.cwd(), 'public/uploads')
-    await mkdir(uploadsDir, { recursive: true })
+    // Supabase Storage 配置
+    const supabase = useSupabase()
+    const bucketName = 'uploads'
 
-    // Save file
-    const filePath = resolve(uploadsDir, uniqueName)
-    await writeFile(filePath, file.data)
+    // 上传文件到 Supabase Storage
+    const { data, error } = await supabase.storage
+      .from(bucketName)
+      .upload(uniqueName, file.data, {
+        contentType: file.type || 'application/octet-stream',
+        upsert: false
+      })
 
-    // Return public URL
+    if (error) {
+      console.error('Supabase Storage 上传失败:', error)
+      throw createError({
+        statusCode: 500,
+        statusMessage: `Upload failed: ${error.message}`
+      })
+    }
+
+    // 获取公开 URL
+    const { data: urlData } = supabase.storage
+      .from(bucketName)
+      .getPublicUrl(uniqueName)
+
     return {
       success: true,
-      url: `/uploads/${uniqueName}`
+      url: urlData.publicUrl
     }
-  } catch (error) {
+  } catch (error: any) {
+    console.error('上传错误:', error)
     throw createError({
-      statusCode: 500,
-      statusMessage: 'Failed to upload file'
+      statusCode: error.statusCode || 500,
+      statusMessage: error.statusMessage || 'Failed to upload file'
     })
   }
 })
