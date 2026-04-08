@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { uploadImage, uploadVideo } from '~/utils/upload'
+
 definePageMeta({
   layout: 'admin',
   middleware: 'admin-auth'
@@ -51,28 +53,29 @@ async function save() {
   }
 }
 
-async function uploadImage(field: 'background_image' | 'video', event: Event) {
+async function handleFileUpload(field: 'background_image' | 'video', event: Event) {
   const input = event.target as HTMLInputElement
   const file = input.files?.[0]
   if (!file) return
 
-  const formData = new FormData()
-  formData.append('file', file)
-
   try {
-    const result = await $fetch('/api/upload', {
-      method: 'POST',
-      body: formData
-    })
+    const result = field === 'video'
+      ? await uploadVideo(file)
+      : await uploadImage(file)
+
+    if (!result.success) {
+      throw new Error(result.error)
+    }
+
     form[field] = result.url
     toast.add({
       title: '上传成功',
       color: 'success'
     })
-  } catch (error) {
+  } catch (error: any) {
     toast.add({
       title: '上传失败',
-      description: '请检查文件格式和大小',
+      description: error.message || '请检查文件格式和大小',
       color: 'error'
     })
   }
@@ -118,7 +121,7 @@ async function uploadImage(field: 'background_image' | 'video', event: Event) {
                     type="file"
                     accept="image/*"
                     class="hidden"
-                    @change="uploadImage('background_image', $event)"
+                    @change="handleFileUpload('background_image', $event)"
                 />
                 <img
                     v-if="form.background_image"
@@ -146,7 +149,7 @@ async function uploadImage(field: 'background_image' | 'video', event: Event) {
                   type="file"
                   accept="video/*"
                   class="hidden"
-                  @change="uploadImage('video', $event)"
+                  @change="handleFileUpload('video', $event)"
               />
             </div>
           </UFormField>
