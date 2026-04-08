@@ -27,7 +27,7 @@ function openModal(member?: any) {
     form.name = member.name
     form.role = member.role
     form.image = member.image || ''
-    form.is_current = member.is_current === 1
+    form.is_current = Boolean(member.is_current)
   } else {
     editingMember.value = null
     form.id = null
