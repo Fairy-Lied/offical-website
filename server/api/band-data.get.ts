@@ -1,51 +1,96 @@
-import { getDB } from '~/server/utils/db'
+import { useSupabase } from '~/server/utils/supabase'
 
-export default defineEventHandler(() => {
-  const db = getDB()
+export default defineEventHandler(async () => {
+  const supabase = useSupabase()
 
   // 获取 Hero 数据
-  const hero = db.prepare('SELECT * FROM hero LIMIT 1').get()
+  const { data: hero } = await supabase
+    .from('hero')
+    .select('*')
+    .limit(1)
+    .single()
 
   // 获取 Legend 数据
-  const legend = db.prepare('SELECT * FROM legend LIMIT 1').get()
+  const { data: legend } = await supabase
+    .from('legend')
+    .select('*')
+    .limit(1)
+    .single()
 
-  // 获取成员数据
-  const currentMembers = db.prepare('SELECT * FROM members WHERE is_current = 1 ORDER BY sort_order').all()
-  const formerMembers = db.prepare('SELECT * FROM members WHERE is_current = 0 ORDER BY sort_order').all()
+  // 获取现任成员
+  const { data: currentMembers } = await supabase
+    .from('members')
+    .select('*')
+    .eq('is_current', true)
+    .order('sort_order')
+
+  // 获取历任成员
+  const { data: formerMembers } = await supabase
+    .from('members')
+    .select('*')
+    .eq('is_current', false)
+    .order('sort_order')
 
   // 获取专辑数据（包含曲目）
-  const albums = db.prepare('SELECT * FROM albums ORDER BY sort_order').all()
-  const albumsWithTracks = albums.map((album: any) => {
-    const tracks = db.prepare('SELECT title FROM album_tracks WHERE album_id = ? ORDER BY track_number').all(album.id)
-    return {
-      ...album,
-      tracks: tracks.map((t: any) => t.title)
-    }
-  })
+  const { data: albums } = await supabase
+    .from('albums')
+    .select('*')
+    .order('sort_order')
+
+  // 获取每个专辑的曲目
+  const albumsWithTracks = await Promise.all(
+    (albums || []).map(async (album) => {
+      const { data: tracks } = await supabase
+        .from('album_tracks')
+        .select('title')
+        .eq('album_id', album.id)
+        .order('track_number')
+
+      return {
+        ...album,
+        tracks: (tracks || []).map(t => t.title)
+      }
+    })
+  )
 
   // 获取巡演数据
-  const tours = db.prepare('SELECT * FROM tours ORDER BY sort_order').all()
+  const { data: tours } = await supabase
+    .from('tours')
+    .select('*')
+    .order('sort_order')
 
   // 获取图集数据
-  const gallery = db.prepare('SELECT * FROM gallery ORDER BY sort_order').all()
+  const { data: gallery } = await supabase
+    .from('gallery')
+    .select('*')
+    .order('sort_order')
 
   // 获取联系方式
-  const contacts = db.prepare('SELECT * FROM contacts LIMIT 1').get() || { email: '' }
-  const socials = db.prepare('SELECT * FROM social_links ORDER BY sort_order').all()
+  const { data: contacts } = await supabase
+    .from('contacts')
+    .select('*')
+    .limit(1)
+    .single()
+
+  // 获取社交媒体链接
+  const { data: socials } = await supabase
+    .from('social_links')
+    .select('*')
+    .order('sort_order')
 
   return {
     hero: hero || {},
     legend: legend || {},
     members: {
-      current: currentMembers,
-      former: formerMembers
+      current: currentMembers || [],
+      former: formerMembers || []
     },
     albums: albumsWithTracks,
-    tours,
-    gallery,
+    tours: tours || [],
+    gallery: gallery || [],
     contacts: {
-      ...contacts,
-      socials
+      ...(contacts || { email: '' }),
+      socials: socials || []
     }
   }
 })

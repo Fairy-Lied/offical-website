@@ -1,24 +1,50 @@
-import { getDB } from '~/server/utils/db'
+import { useSupabase } from '~/server/utils/supabase'
 
 export default defineEventHandler(async (event) => {
-  const db = getDB()
+  const supabase = useSupabase()
   const body = await readBody(event)
   const { id, url, alt } = body
 
   if (id) {
-    db.prepare(`
-      UPDATE gallery SET
-        url = ?,
-        alt = ?
-      WHERE id = ?
-    `).run(url, alt, id)
+    // 更新图片
+    const { error } = await supabase
+      .from('gallery')
+      .update({ url, alt })
+      .eq('id', id)
+
+    if (error) {
+      console.error('更新图片失败:', error)
+      throw createError({ statusCode: 500, statusMessage: '更新失败' })
+    }
+
     return { success: true, message: '图片信息已更新' }
   } else {
-    const maxOrder = db.prepare('SELECT MAX(sort_order) as max FROM gallery').get() as { max: number }
-    const result = db.prepare(`
-      INSERT INTO gallery (url, alt, sort_order)
-      VALUES (?, ?, ?)
-    `).run(url, alt, (maxOrder?.max || 0) + 1)
-    return { success: true, message: '图片已添加', id: result.lastInsertRowid }
+    // 获取最大排序号
+    const { data: maxOrderData } = await supabase
+      .from('gallery')
+      .select('sort_order')
+      .order('sort_order', { ascending: false })
+      .limit(1)
+      .single()
+
+    const maxOrder = maxOrderData?.sort_order || 0
+
+    // 新增图片
+    const { data: result, error } = await supabase
+      .from('gallery')
+      .insert({
+        url,
+        alt,
+        sort_order: maxOrder + 1
+      })
+      .select('id')
+      .single()
+
+    if (error) {
+      console.error('新增图片失败:', error)
+      throw createError({ statusCode: 500, statusMessage: '新增失败' })
+    }
+
+    return { success: true, message: '图片已添加', id: result.id }
   }
 })
