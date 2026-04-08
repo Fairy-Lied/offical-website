@@ -8,6 +8,7 @@
  * - 向下滚动提示（可点击）
  * - 图片懒加载
  * - 支持 prefers-reduced-motion
+ * - 支持用户交互后播放视频（解决浏览器自动播放限制）
  */
 
 interface HeroSectionProps {
@@ -30,6 +31,10 @@ const props = withDefaults(defineProps<HeroSectionProps>(), {
   description: '· Gothic / Symphonic Metal',
   nextSectionId: 'legend',
 })
+
+// 视频播放控制
+const {registerVideo, unregisterVideo} = useVideoPlayOnInteraction()
+const videoRef = ref<HTMLVideoElement | null>(null)
 
 // 视差效果
 const parallaxOffset = ref(0)
@@ -86,6 +91,11 @@ const isVisible = ref(false)
 onMounted(() => {
   checkMotionPreference()
 
+  // 注册视频元素
+  if (videoRef.value) {
+    registerVideo(videoRef.value)
+  }
+
   // 触发动画
   nextTick(() => {
     isVisible.value = true
@@ -93,11 +103,16 @@ onMounted(() => {
 
   // 监听滚动（用于视差）
   if (!isReducedMotion.value) {
-    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('scroll', onScroll, {passive: true})
   }
 })
 
 onUnmounted(() => {
+  // 清理视频元素
+  if (videoRef.value) {
+    unregisterVideo(videoRef.value)
+  }
+
   if (rafId) {
     cancelAnimationFrame(rafId)
   }
@@ -110,22 +125,32 @@ onUnmounted(() => {
     <!-- 背景图 - 视差效果 -->
     <div class="hero-background">
       <div
-        class="parallax-wrapper"
-        :style="{ transform: `translateY(${parallaxOffset}px)`, '--heroBgImg': `url(${backgroundImage})` }"
+          class="parallax-wrapper"
+          :style="{ transform: `translateY(${parallaxOffset}px)`, '--heroBgImg': `url(${backgroundImage})` }"
       >
-        <video v-if="video" class="top-video" loop :src="video" muted autoplay preload="auto" />
+        <video
+            v-if="video"
+            ref="videoRef"
+            class="top-video"
+            loop
+            :src="video"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+        />
       </div>
 
       <!-- 渐变遮罩 -->
-      <div class="gradient-overlay gradient-overlay-top" />
-      <div class="gradient-overlay gradient-overlay-left" />
+      <div class="gradient-overlay gradient-overlay-top"/>
+      <div class="gradient-overlay gradient-overlay-left"/>
     </div>
 
     <!-- Hero 内容 - 底部对齐 -->
     <div class="hero-content">
       <div
-        class="content-wrapper"
-        :class="isVisible ? 'is-visible' : ''"
+          class="content-wrapper"
+          :class="isVisible ? 'is-visible' : ''"
       >
         <!-- 主标题 - 粉色 #FF6A95 -->
         <h1 class="hero-title">
@@ -134,8 +159,8 @@ onUnmounted(() => {
 
         <!-- 装饰线 - #FF174F -->
         <div
-          class="accent-line"
-          :class="isVisible ? 'is-visible' : ''"
+            class="accent-line"
+            :class="isVisible ? 'is-visible' : ''"
         />
 
         <!-- 副标题 - #D6CCEA -->
@@ -152,23 +177,23 @@ onUnmounted(() => {
 
     <!-- 向下滚动提示 - 可点击 -->
     <button
-      class="scroll-indicator"
-      :class="{ 'animate-bounce': !isReducedMotion }"
-      aria-label="Scroll to next section"
-      @click="scrollToNext"
+        class="scroll-indicator"
+        :class="{ 'animate-bounce': !isReducedMotion }"
+        aria-label="Scroll to next section"
+        @click="scrollToNext"
     >
       <div class="scroll-button">
         <svg
-          class="scroll-icon"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+            class="scroll-icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
           />
         </svg>
       </div>
@@ -200,6 +225,7 @@ onUnmounted(() => {
   background-position: center;
   background-size: cover;
   background-image: var(--heroBgImg);
+
   .top-video {
     width: 100%;
     height: 100%;
