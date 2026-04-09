@@ -68,6 +68,9 @@ function openLightbox(index: number) {
             :src="image.url"
             :alt="image.alt"
             loading="lazy"
+            decoding="async"
+            width="400"
+            height="140"
             class="gallery-image"
           />
 
