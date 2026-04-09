@@ -65,6 +65,9 @@ function isExpanded(albumTitle: string): boolean {
               :alt="album.title"
               class="cover-image"
               loading="lazy"
+              decoding="async"
+              width="180"
+              height="180"
             />
           </div>
 

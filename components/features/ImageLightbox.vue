@@ -191,6 +191,7 @@ function onImageLoad() {
             v-if="currentImage"
             :src="currentImage.url"
             :alt="currentImage.alt"
+            decoding="async"
             class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl transition-transform duration-300"
             @load="onImageLoad"
           >

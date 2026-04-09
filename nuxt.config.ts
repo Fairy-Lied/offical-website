@@ -9,7 +9,7 @@ export default defineNuxtConfig({
         }
     },
     devtools: {enabled: true},
-    modules: ['@nuxt/ui', 'nuxt-auth-utils', '@vercel/speed-insights', '@vercel/analytics'],
+    modules: ['@nuxt/ui', 'nuxt-auth-utils', '@vercel/speed-insights', '@vercel/analytics', '@nuxt/image'],
     css: ['~/assets/css/main.css'],
 
     // 运行时配置（服务端可用）
@@ -69,5 +69,10 @@ export default defineNuxtConfig({
         providers: {
             google: false
         }
+    },
+    // 图片优化：@nuxt/image 自动 WebP/AVIF 转换
+    image: {
+        // 默认使用 WebP 格式
+        format: ['webp', 'png', 'jpeg']
     }
 })

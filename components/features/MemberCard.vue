@@ -52,8 +52,10 @@ const ariaLabel = computed(() => {
         :src="image"
         :alt="name"
         class="card-image"
+        loading="lazy"
+        decoding="async"
     />
-    <!-- 默认头像 -->
+    <!-- 头像 -->
     <div
         v-else
         class="card-image default-avatar"
@@ -90,6 +92,8 @@ const ariaLabel = computed(() => {
         :src="image"
         :alt="name"
         class="card-image grayscale"
+        loading="lazy"
+        decoding="async"
     />
     <!-- 默认头像 -->
     <div
