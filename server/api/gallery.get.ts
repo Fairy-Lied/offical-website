@@ -6,7 +6,7 @@ export default defineEventHandler(async () => {
   const { data, error } = await supabase
     .from('gallery')
     .select('*')
-    .order('sort_order')
+    .order('created_at', { ascending: false })
 
   if (error) {
     console.error('获取图集列表失败:', error)
