@@ -60,7 +60,7 @@ html, body {
 }
 
 body {
-  font-family: "Inter", "Roboto", "Noto Sans SC", sans-serif;
+  font-family: "Inter", "Roboto", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-primary);
