@@ -22,13 +22,13 @@ interface TourSectionProps {
 const props = defineProps<TourSectionProps>()
 
 // 分页状态
-const visibleCount = ref(10)
+const visibleCount = ref(5)
 const showMore = computed(() => props.tourDates.length > visibleCount.value)
 const visibleTours = computed(() => props.tourDates.slice(0, visibleCount.value))
 
 // 加载更多
 function loadMore() {
-  visibleCount.value += 10
+  visibleCount.value += 5
 }
 
 // 获取状态文本
