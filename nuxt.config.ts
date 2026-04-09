@@ -9,7 +9,7 @@ export default defineNuxtConfig({
         }
     },
     devtools: {enabled: true},
-    modules: ['@nuxt/ui', 'nuxt-auth-utils'],
+    modules: ['@nuxt/ui', 'nuxt-auth-utils', '@vercel/speed-insights'],
     css: ['~/assets/css/main.css'],
 
     // 运行时配置（服务端可用）

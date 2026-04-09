@@ -41,6 +41,9 @@ dependencies:
   '@unhead/vue':
     specifier: ^2.0.3
     version: 2.1.13(vue@3.5.32)
+  '@vercel/speed-insights':
+    specifier: ^2.0.0
+    version: 2.0.0(nuxt@4.4.2)(vue-router@4.6.4)(vue@3.5.32)
   date-fns:
     specifier: ^4.1.0
     version: 4.1.0
@@ -4864,6 +4867,37 @@ packages:
       - encoding
       - rollup
       - supports-color
+    dev: false
+
+  /@vercel/speed-insights@2.0.0(nuxt@4.4.2)(vue-router@4.6.4)(vue@3.5.32):
+    resolution: {integrity: sha512-jwkNcrTeafWxjmWq4AHBaptSqZiJkYU5adLC9QBSqeim0GcqDMgN5Ievh8OG1rJ6W3A4l1oiP7qr9CWxGuzu3w==}
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      nuxt: '>= 3'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      nuxt:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
+    dependencies:
+      nuxt: 4.4.2(@babel/core@7.29.0)(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@vue/compiler-sfc@3.5.32)(eslint@9.39.4)(sass@1.99.0)(typescript@5.9.3)(vite@7.3.2)
+      vue: 3.5.32(typescript@5.9.3)
+      vue-router: 4.6.4(vue@3.5.32)
     dev: false
 
   /@vitejs/plugin-vue-jsx@5.1.5(vite@7.3.2)(vue@3.5.32):
