@@ -63,7 +63,7 @@ export default defineEventHandler(async () => {
   const { data: gallery } = await supabase
     .from('gallery')
     .select('*')
-    .order('sort_order')
+    .order('created_at', { ascending: false })
 
   // 获取联系方式
   const { data: contacts } = await supabase
