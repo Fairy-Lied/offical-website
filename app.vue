@@ -38,10 +38,6 @@ useHead({
       href: "https://fonts.gstatic.com",
       crossorigin: "anonymous",
     },
-    {
-      rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap",
-    },
   ],
 });
 </script>
