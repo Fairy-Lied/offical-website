@@ -28,17 +28,7 @@ useHead({
   bodyAttrs: {
     class: "bg-bg-primary text-text-body overflow-x-hidden",
   },
-  link: [
-    {
-      rel: "preconnect",
-      href: "https://fonts.googleapis.com",
-    },
-    {
-      rel: "preconnect",
-      href: "https://fonts.gstatic.com",
-      crossorigin: "anonymous",
-    },
-  ],
+  link: [],
 });
 </script>
 
