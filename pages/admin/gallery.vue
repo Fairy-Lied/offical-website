@@ -168,7 +168,7 @@ async function handleImageUpload(event: Event) {
             <UForm @submit.prevent="save" class="space-y-4">
               <UFormField label="图片" required>
                 <div class="space-y-2">
-                  <UInput v-model="form.url" placeholder="图片URL"/>
+                  <UInput v-model="form.url" placeholder="图片URL" class="w-full"/>
                   <div class="flex items-center gap-4">
                     <UButton
                         type="button"

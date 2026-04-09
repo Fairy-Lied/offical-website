@@ -55,7 +55,9 @@ export async function uploadToSupabase(
     // 获取公开 URL
     const { data: urlData } = supabase.storage
       .from('uploads')
-      .getPublicUrl(fileName)
+      .getPublicUrl(fileName, {
+        transform: {}
+      })
 
     return {
       success: true,
