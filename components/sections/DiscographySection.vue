@@ -23,6 +23,16 @@ const props = defineProps<DiscographySectionProps>()
 // 展开状态管理
 const expandedAlbums = ref<Set<string>>(new Set())
 
+// 分页状态
+const visibleCount = ref(2)
+const showMore = computed(() => props.albums.length > visibleCount.value)
+const visibleAlbums = computed(() => props.albums.slice(0, visibleCount.value))
+
+// 加载更多
+function loadMore() {
+  visibleCount.value += 2
+}
+
 function toggleTracks(albumTitle: string) {
   if (expandedAlbums.value.has(albumTitle)) {
     expandedAlbums.value.delete(albumTitle)
@@ -54,7 +64,7 @@ function isExpanded(albumTitle: string): boolean {
       <!-- 专辑列表 -->
       <div class="albums-list">
         <div
-          v-for="album in albums"
+          v-for="album in visibleAlbums"
           :key="album.title"
           class="album-card"
         >
@@ -104,6 +114,19 @@ function isExpanded(albumTitle: string): boolean {
             </button>
           </div>
         </div>
+      </div>
+
+      <!-- 加载更多按钮 -->
+      <div
+        v-if="showMore"
+        class="load-more-container"
+      >
+        <button
+          class="load-more-btn"
+          @click="loadMore"
+        >
+          加载更多
+        </button>
       </div>
     </div>
   </section>
@@ -204,6 +227,29 @@ function isExpanded(albumTitle: string): boolean {
 
   &:hover {
     color: #D6CCEA;
+  }
+}
+
+// 加载更多按钮
+.load-more-container {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.load-more-btn {
+  padding: 10px 32px;
+  background: transparent;
+  border: 1px solid #9F99AD;
+  border-radius: 4px;
+  color: #9F99AD;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 180ms ease;
+
+  &:hover {
+    border-color: #FF2F7D;
+    color: #FF2F7D;
   }
 }
 
