@@ -21,6 +21,16 @@ interface TourSectionProps {
 
 const props = defineProps<TourSectionProps>()
 
+// 分页状态
+const visibleCount = ref(10)
+const showMore = computed(() => props.tourDates.length > visibleCount.value)
+const visibleTours = computed(() => props.tourDates.slice(0, visibleCount.value))
+
+// 加载更多
+function loadMore() {
+  visibleCount.value += 10
+}
+
 // 获取状态文本
 function getStatusText(status: TourDate['status']): string {
   const statusMap: Record<string, string> = {
@@ -66,7 +76,7 @@ function getStatusClasses(status: TourDate['status']): string {
       <!-- 巡演列表 -->
       <div class="tour-list">
         <div
-          v-for="show in tourDates"
+          v-for="show in visibleTours"
           :key="show.date"
           class="tour-item"
         >
@@ -100,6 +110,19 @@ function getStatusClasses(status: TourDate['status']): string {
             {{ getStatusText(show.status) }}
           </span>
         </div>
+      </div>
+
+      <!-- 加载更多按钮 -->
+      <div
+        v-if="showMore"
+        class="load-more-container"
+      >
+        <button
+          class="load-more-btn"
+          @click="loadMore"
+        >
+          加载更多
+        </button>
       </div>
     </div>
   </section>
@@ -178,6 +201,29 @@ function getStatusClasses(status: TourDate['status']): string {
   font-size: 13px;
   font-weight: 700;
   transition: color 180ms ease;
+}
+
+// 加载更多按钮
+.load-more-container {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.load-more-btn {
+  padding: 10px 32px;
+  background: transparent;
+  border: 1px solid #9F99AD;
+  border-radius: 4px;
+  color: #9F99AD;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 180ms ease;
+
+  &:hover {
+    border-color: #FF2F7D;
+    color: #FF2F7D;
+  }
 }
 
 // 响应式 - 平板

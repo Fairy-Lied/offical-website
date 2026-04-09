@@ -25,6 +25,37 @@ const props = defineProps<GallerySectionProps>()
 const lightboxOpen = ref(false)
 const lightboxIndex = ref(0)
 
+// 分页状态（3行：桌面3列=9张，移动2列=6张）
+const VISIBLE_DESKTOP = 9 // 3行 x 3列
+const VISIBLE_MOBILE = 6 // 3行 x 2列
+const isMobile = ref(false)
+const loadMoreCount = ref(0) // 初始不加载额外内容
+
+function updateBreakpoint() {
+  isMobile.value = window.innerWidth <= 768
+}
+
+onMounted(() => {
+  updateBreakpoint()
+  window.addEventListener('resize', updateBreakpoint)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateBreakpoint)
+})
+
+const visibleCount = computed(() => {
+  const base = isMobile.value ? VISIBLE_MOBILE : VISIBLE_DESKTOP
+  return base + loadMoreCount.value
+})
+const showMore = computed(() => props.images.length > visibleCount.value)
+const visibleImages = computed(() => props.images.slice(0, visibleCount.value))
+
+// 加载更多
+function loadMore() {
+  loadMoreCount.value += isMobile.value ? VISIBLE_MOBILE : VISIBLE_DESKTOP
+}
+
 // 打开灯箱
 function openLightbox(index: number) {
   lightboxIndex.value = index
@@ -54,7 +85,7 @@ function openLightbox(index: number) {
         aria-label="演出照片"
       >
         <div
-          v-for="(image, index) in images"
+          v-for="(image, index) in visibleImages"
           :key="image.id"
           role="listitem"
           class="gallery-item"
@@ -101,6 +132,19 @@ function openLightbox(index: number) {
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- 加载更多按钮 -->
+    <div
+      v-if="showMore"
+      class="load-more-container"
+    >
+      <button
+        class="load-more-btn"
+        @click="loadMore"
+      >
+        加载更多
+      </button>
     </div>
 
     <!-- 灯箱组件 -->
@@ -232,6 +276,29 @@ function openLightbox(index: number) {
     .gallery-item:hover & {
       transform: none;
     }
+  }
+}
+
+// 加载更多按钮
+.load-more-container {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.load-more-btn {
+  padding: 10px 32px;
+  background: transparent;
+  border: 1px solid #9F99AD;
+  border-radius: 4px;
+  color: #9F99AD;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 180ms ease;
+
+  &:hover {
+    border-color: #FF2F7D;
+    color: #FF2F7D;
   }
 }
 </style>
