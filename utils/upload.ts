@@ -25,7 +25,8 @@ interface UploadResult {
  */
 export async function uploadToSupabase(
   file: File,
-  folder: string = ''
+  folder: string = '',
+  isImage: boolean = false
 ): Promise<UploadResult> {
   try {
     // 生成唯一文件名
@@ -56,7 +57,7 @@ export async function uploadToSupabase(
     const { data: urlData } = supabase.storage
       .from('uploads')
       .getPublicUrl(fileName, {
-        transform: {}
+        transform: isImage ? {} : undefined
       })
 
     return {
@@ -97,7 +98,7 @@ export async function uploadImage(file: File): Promise<UploadResult> {
     }
   }
 
-  return uploadToSupabase(file, 'images')
+  return uploadToSupabase(file, 'images', true)
 }
 
 /**
@@ -123,5 +124,5 @@ export async function uploadVideo(file: File): Promise<UploadResult> {
     }
   }
 
-  return uploadToSupabase(file, 'videos')
+  return uploadToSupabase(file, 'videos', false)
 }
