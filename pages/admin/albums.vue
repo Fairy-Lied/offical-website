@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { uploadImage } from '~/utils/upload'
+import { uploadImage, uploadAudio } from '~/utils/upload'
 
 definePageMeta({
   layout: 'admin',
@@ -13,12 +13,17 @@ const isOpen = ref(false)
 const editingAlbum = ref<any>(null)
 const newTrack = ref('')
 
+interface TrackForm {
+  title: string
+  audio_url?: string
+}
+
 const form = reactive({
   id: null as number | null,
   title: '',
   year: '',
   cover: '',
-  tracks: [] as string[]
+  tracks: [] as TrackForm[]
 })
 
 function openModal(album?: any) {
@@ -28,11 +33,12 @@ function openModal(album?: any) {
     form.title = album.title
     form.year = album.year
     form.cover = album.cover || ''
-    // 处理 tracks 数据格式（后端返回对象数组，需要提取 title）
     const tracksData = album.tracks
     if (Array.isArray(tracksData)) {
-      // 如果是对象数组，提取 title；如果是字符串数组，直接使用
-      form.tracks = tracksData.map((t: any) => typeof t === 'string' ? t : t.title)
+      form.tracks = tracksData.map((t: any) => ({
+        title: typeof t === 'string' ? t : (t.title || ''),
+        audio_url: typeof t === 'string' ? '' : (t.audio_url || '')
+      }))
     } else {
       form.tracks = []
     }
@@ -50,13 +56,48 @@ function openModal(album?: any) {
 
 function addTrack() {
   if (newTrack.value.trim()) {
-    form.tracks.push(newTrack.value.trim())
+    form.tracks.push({ title: newTrack.value.trim(), audio_url: '' })
     newTrack.value = ''
   }
 }
 
 function removeTrack(index: number) {
   form.tracks.splice(index, 1)
+}
+
+// 上传 MP3 到指定曲目
+const uploadingTrackIndex = ref<number | null>(null)
+const audioInputs = ref<Record<number, HTMLInputElement | undefined>>({})
+
+async function handleAudioUpload(event: Event, index: number) {
+  const input = event.target as HTMLInputElement
+  const file = input.files?.[0]
+  if (!file) return
+
+  const track = form.tracks[index]
+  if (!track) return
+
+  uploadingTrackIndex.value = index
+  try {
+    const result = await uploadAudio(file)
+    if (!result.success) {
+      throw new Error(result.error)
+    }
+    track.audio_url = result.url
+    toast.add({ title: '音频上传成功', color: 'success' })
+  } catch (err: any) {
+    toast.add({ title: '上传失败', description: err.message || '请检查文件格式和大小', color: 'error' })
+  } finally {
+    uploadingTrackIndex.value = null
+  }
+}
+
+// 删除音频
+function removeAudio(index: number) {
+  const track = form.tracks[index]
+  if (!track) return
+  track.audio_url = ''
+  toast.add({ title: '音频已删除', color: 'success' })
 }
 
 const saving = ref(false)
@@ -212,7 +253,7 @@ async function handleCoverUpload(event: Event) {
                         type="button"
                         variant="soft"
                         size="sm"
-                        @click="$refs.coverInput?.click()"
+                        @click="($refs.coverInput as HTMLInputElement)?.click()"
                     >
                       上传封面
                     </UButton>
@@ -250,16 +291,44 @@ async function handleCoverUpload(event: Event) {
                     <div
                         v-for="(track, index) in form.tracks"
                         :key="index"
-                        class="flex items-center justify-between p-2 bg-gray-700 rounded"
+                        class="flex items-center justify-between gap-2 p-2 bg-gray-700 rounded"
                     >
-                      <span class="text-sm text-white">{{ index + 1 }}. {{ track }}</span>
-                      <UButton
-                          color="error"
-                          variant="ghost"
-                          icon="i-heroicons-x-mark"
-                          size="xs"
-                          @click="removeTrack(index)"
-                      />
+                      <div class="flex-1 min-w-0">
+                        <span class="text-sm text-white">{{ index + 1 }}. {{ track.title }}</span>
+                        <span v-if="track.audio_url" class="ml-2 text-xs text-green-400">♪</span>
+                      </div>
+                      <div class="flex items-center gap-1 flex-shrink-0">
+                        <input
+                            :ref="(el: unknown) => { if (el) audioInputs[index] = el as HTMLInputElement }"
+                            type="file"
+                            accept="audio/*"
+                            class="hidden"
+                            @change="(e: Event) => handleAudioUpload(e, index)"
+                        />
+                        <UButton
+                            color="neutral"
+                            variant="ghost"
+                            :icon="track.audio_url ? 'i-heroicons-arrow-path' : 'i-heroicons-musical-note'"
+                            size="xs"
+                            :loading="uploadingTrackIndex === index"
+                            @click="(audioInputs[index] as HTMLInputElement | undefined)?.click()"
+                        />
+                        <UButton
+                            v-if="track.audio_url"
+                            color="error"
+                            variant="ghost"
+                            icon="i-heroicons-trash"
+                            size="xs"
+                            @click="removeAudio(index)"
+                        />
+                        <UButton
+                            color="error"
+                            variant="ghost"
+                            icon="i-heroicons-x-mark"
+                            size="xs"
+                            @click="removeTrack(index)"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
