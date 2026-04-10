@@ -88,6 +88,7 @@ export interface Database {
           album_id: number
           title: string
           track_number: number
+          audio_url: string | null
         }
         Insert: Omit<Database['public']['Tables']['album_tracks']['Row'], 'id'>
         Update: Partial<Database['public']['Tables']['album_tracks']['Insert']>

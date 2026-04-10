@@ -126,3 +126,29 @@ export async function uploadVideo(file: File): Promise<UploadResult> {
 
   return uploadToSupabase(file, 'videos', false)
 }
+
+/**
+ * 上传音频文件
+ */
+export async function uploadAudio(file: File): Promise<UploadResult> {
+  // 验证文件类型
+  if (!file.type.startsWith('audio/')) {
+    return {
+      success: false,
+      url: '',
+      error: '请选择音频文件'
+    }
+  }
+
+  // 验证文件大小（最大 50MB）
+  const maxSize = 50 * 1024 * 1024
+  if (file.size > maxSize) {
+    return {
+      success: false,
+      url: '',
+      error: '音频文件大小不能超过 50MB'
+    }
+  }
+
+  return uploadToSupabase(file, 'audio', false)
+}

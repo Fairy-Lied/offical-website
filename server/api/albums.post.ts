@@ -1,9 +1,20 @@
 import { useSupabase } from '~/server/utils/supabase'
 
+interface TrackData {
+  title: string
+  audio_url?: string
+}
+
 export default defineEventHandler(async (event) => {
   const supabase = useSupabase()
   const body = await readBody(event)
-  const { id, title, year, cover, tracks } = body
+  const { id, title, year, cover, tracks } = body as {
+    id?: number
+    title: string
+    year: string
+    cover: string
+    tracks: TrackData[]
+  }
 
   if (id) {
     // 更新专辑
@@ -35,10 +46,11 @@ export default defineEventHandler(async (event) => {
 
     // 插入新曲目
     if (tracks && tracks.length > 0) {
-      const trackData = tracks.map((track: string, index: number) => ({
+      const trackData = tracks.map((track: TrackData, index: number) => ({
         album_id: id,
-        title: track,
-        track_number: index + 1
+        title: track.title,
+        track_number: index + 1,
+        audio_url: track.audio_url || null
       }))
 
       const { error: trackError } = await supabase
@@ -84,10 +96,11 @@ export default defineEventHandler(async (event) => {
 
     // 插入曲目
     if (tracks && tracks.length > 0) {
-      const trackData = tracks.map((track: string, index: number) => ({
+      const trackData = tracks.map((track: TrackData, index: number) => ({
         album_id: albumId,
-        title: track,
-        track_number: index + 1
+        title: track.title,
+        track_number: index + 1,
+        audio_url: track.audio_url || null
       }))
 
       const { error: trackError } = await supabase
