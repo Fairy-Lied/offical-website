@@ -41,6 +41,11 @@ function handleClose() {
 }
 
 const isVisible = computed(() => playerState.value !== 'idle')
+
+const progressPercent = computed(() => {
+  if (!duration.value || !currentTime.value) return 0
+  return (currentTime.value / duration.value) * 100
+})
 </script>
 
 <template>
@@ -81,6 +86,7 @@ const isVisible = computed(() => playerState.value !== 'idle')
             :max="duration || 100"
             :step="0.1"
             :value="currentTime"
+            :style="{ '--progress': `${progressPercent}%` }"
             @input="handleSeek(Number(($event.target as HTMLInputElement).value))"
             class="player-slider"
           />
@@ -212,7 +218,6 @@ const isVisible = computed(() => playerState.value !== 'idle')
 }
 
 .player-slider {
-  flex: 1;
   height: 4px;
   -webkit-appearance: none;
   appearance: none;
@@ -221,6 +226,7 @@ const isVisible = computed(() => playerState.value !== 'idle')
   outline: none;
   cursor: pointer;
   transition: height 150ms ease;
+  width: 100%;
 
   &:hover {
     height: 6px;
@@ -234,6 +240,7 @@ const isVisible = computed(() => playerState.value !== 'idle')
     background: #FF174F;
     cursor: pointer;
     box-shadow: 0 0 6px rgba(255, 23, 79, 0.4);
+    margin-top: -4px;
   }
 
   &::-moz-range-thumb {
@@ -244,10 +251,23 @@ const isVisible = computed(() => playerState.value !== 'idle')
     cursor: pointer;
     border: none;
     box-shadow: 0 0 6px rgba(255, 23, 79, 0.4);
+    margin-top: -4px;
   }
 
   &::-webkit-slider-runnable-track {
     background: linear-gradient(to right, #FF174F 0%, #FF174F var(--progress, 0%), rgba(159, 153, 173, 0.3) var(--progress, 0%));
+    height: 4px;
+    border-radius: 2px;
+  }
+
+  &::-moz-range-track {
+    background: rgba(159, 153, 173, 0.3);
+    height: 4px;
+    border-radius: 2px;
+  }
+
+  &::-moz-range-progress {
+    background: #FF174F;
     height: 4px;
     border-radius: 2px;
   }

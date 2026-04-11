@@ -52,6 +52,9 @@ useHead({
           <NuxtPage/>
         </UApp>
       </main>
+
+      <!-- 底部播放器 -->
+      <AudioPlayerBar v-if="!isAdminPage" />
     </div>
   </NuxtLayout>
 </template>

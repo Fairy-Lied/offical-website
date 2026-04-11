@@ -31,7 +31,14 @@ let sharedBlobUrl: string | null = null
 let sharedCachedTrackId: number | null = null
 let sharedCachedTrackTitle: string | null = null
 let sharedCurrentRequestId: number | null = null
-let sharedInstanceCount = 0 // 追踪有多少组件在使用
+let sharedInstanceCount = 0
+
+// 命名事件处理器，用于 cleanup 时正确移除
+let onTimeUpdateHandler: (() => void) | null = null
+let onPlayingHandler: (() => void) | null = null
+let onPauseHandler: (() => void) | null = null
+let onEndedHandler: (() => void) | null = null
+let onErrorHandler: (() => void) | null = null
 
 // XOR 解密（与服务端加密对称）
 function xorDecrypt(data: Uint8Array, key: Uint8Array): Uint8Array {
@@ -53,9 +60,21 @@ function isRequestCancelled(requestId: number): boolean {
 // 清理资源（完全释放）
 function cleanup() {
   if (sharedAudio.value) {
-    sharedAudio.value.pause()
-    sharedAudio.value.src = ''
+    const el = sharedAudio.value
+    // 先移除所有事件监听器，防止后续 pause/error 事件回调覆盖状态
+    if (onTimeUpdateHandler) el.removeEventListener('timeupdate', onTimeUpdateHandler)
+    if (onPlayingHandler) el.removeEventListener('playing', onPlayingHandler)
+    if (onPauseHandler) el.removeEventListener('pause', onPauseHandler)
+    if (onEndedHandler) el.removeEventListener('ended', onEndedHandler)
+    if (onErrorHandler) el.removeEventListener('error', onErrorHandler)
+    onTimeUpdateHandler = null
+    onPlayingHandler = null
+    onPauseHandler = null
+    onEndedHandler = null
+    onErrorHandler = null
     sharedAudio.value = null
+    el.pause()
+    el.src = ''
   }
   if (sharedBlobUrl) {
     URL.revokeObjectURL(sharedBlobUrl)
@@ -145,25 +164,37 @@ async function play(trackId: number, trackTitle = ''): Promise<void> {
     sharedBlobUrl = URL.createObjectURL(blob)
 
     sharedAudio.value = new Audio(sharedBlobUrl)
-    sharedAudio.value.addEventListener('loadedmetadata', () => {
-      sharedDuration.value = sharedAudio.value?.duration || 0
-    })
-    sharedAudio.value.addEventListener('timeupdate', () => {
+    const audio = sharedAudio.value
+
+    onTimeUpdateHandler = () => {
       if (sharedAudio.value) sharedCurrentTime.value = sharedAudio.value.currentTime
-    })
-    sharedAudio.value.addEventListener('playing', () => {
+    }
+    onPlayingHandler = () => {
       if (!isRequestCancelled(requestId)) sharedState.value = 'playing'
-    })
-    sharedAudio.value.addEventListener('pause', () => { sharedState.value = 'paused' })
-    sharedAudio.value.addEventListener('ended', () => { sharedState.value = 'idle' })
-    sharedAudio.value.addEventListener('error', () => {
+    }
+    onPauseHandler = () => {
+      if (sharedAudio.value) sharedState.value = 'paused'
+    }
+    onEndedHandler = () => {
+      sharedState.value = 'idle'
+    }
+    onErrorHandler = () => {
       if (!isRequestCancelled(requestId)) {
         sharedError.value = '播放出错'
         sharedState.value = 'error'
       }
-    })
+    }
 
-    await sharedAudio.value.play()
+    audio.addEventListener('loadedmetadata', () => {
+      sharedDuration.value = sharedAudio.value?.duration || 0
+    })
+    audio.addEventListener('timeupdate', onTimeUpdateHandler)
+    audio.addEventListener('playing', onPlayingHandler)
+    audio.addEventListener('pause', onPauseHandler)
+    audio.addEventListener('ended', onEndedHandler)
+    audio.addEventListener('error', onErrorHandler)
+
+    await audio.play()
   } catch (e) {
     // 如果是被取消，静默退出
     if (isRequestCancelled(requestId)) return
