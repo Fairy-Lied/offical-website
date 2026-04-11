@@ -12,6 +12,7 @@
 interface Track {
   title: string
   audio_url?: string | null
+  lyrics?: string | null
   id?: number
 }
 
@@ -57,6 +58,17 @@ function isExpanded(albumTitle: string): boolean {
 const { state: playerState, play: playTrack, pause: pauseTrack, resume: resumeTrack, stop: stopTrack } = useAudioPlayer()
 const playingTrackId = ref<number | null>(null)
 
+// 歌词弹窗
+const isLyricsModalOpen = ref(false)
+const currentLyrics = ref('')
+const currentLyricsTitle = ref('')
+
+function openLyrics(trackTitle: string, lyrics: string) {
+  currentLyricsTitle.value = trackTitle
+  currentLyrics.value = lyrics
+  isLyricsModalOpen.value = true
+}
+
 function getTrackId(track: Track, albumTitle: string, trackIndex: number): number {
   if (track.id) return track.id
   // fallback: 生成一个伪 ID（实际播放需要真实 ID）
@@ -80,7 +92,7 @@ async function handlePlay(albumTitle: string, trackIndex: number, track: Track) 
 
   // 不同曲目：重新播放
   playingTrackId.value = trackId
-  await playTrack(trackId)
+  await playTrack(trackId, track.title)
 }
 
 function isTrackPlaying(albumTitle: string, trackIndex: number, track: Track): boolean {
@@ -164,7 +176,17 @@ function isAlbumActive(albumTitle: string, albumTracks?: Track[]): boolean {
                   :key="idx"
                   class="track-item"
                 >
-                  <span>{{ idx + 1 }}. {{ track.title }}</span>
+                  <span class="track-title">
+                    <span>{{ idx + 1 }}. {{ track.title }}</span>
+                    <!-- 歌词按钮 - 紧贴歌名 -->
+                    <button
+                      v-if="track.lyrics"
+                      class="lyrics-btn"
+                      @click="openLyrics(track.title, track.lyrics)"
+                    >
+                      📝
+                    </button>
+                  </span>
                   <template v-if="track.audio_url">
                     <!-- 加载中 -->
                     <span
@@ -212,6 +234,33 @@ function isAlbumActive(albumTitle: string, albumTracks?: Track[]): boolean {
         </button>
       </div>
     </div>
+
+    <!-- 歌词弹窗 -->
+    <Teleport to="body">
+      <Transition name="fade">
+        <div
+          v-if="isLyricsModalOpen"
+          class="lyrics-overlay"
+          @click="isLyricsModalOpen = false"
+        >
+          <div
+            class="lyrics-modal"
+            @click.stop
+          >
+            <div class="lyrics-header">
+              <h3 class="lyrics-title">{{ currentLyricsTitle }}</h3>
+              <button
+                class="lyrics-close"
+                @click="isLyricsModalOpen = false"
+              >
+                ✕
+              </button>
+            </div>
+            <pre class="lyrics-content">{{ currentLyrics }}</pre>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </section>
 </template>
 
@@ -360,6 +409,20 @@ function isAlbumActive(albumTitle: string, albumTracks?: Track[]): boolean {
   gap: 8px;
 }
 
+.track-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.track-title > span:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .play-btn {
   background: none;
   border: none;
@@ -430,6 +493,101 @@ function isAlbumActive(albumTitle: string, albumTracks?: Track[]): boolean {
     border-color: #FF2F7D;
     color: #FF2F7D;
   }
+}
+
+// 歌词按钮
+.lyrics-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0 2px;
+  border-radius: 4px;
+  transition: all 180ms ease;
+  flex-shrink: 0;
+  line-height: 1;
+
+  &:hover {
+    background-color: rgba(255, 23, 79, 0.1);
+    transform: scale(1.15);
+  }
+}
+
+// 歌词弹窗
+.lyrics-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lyrics-modal {
+  background: #1F0F17;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 23, 79, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lyrics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lyrics-title {
+  color: #F2EEF8;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.lyrics-close {
+  background: none;
+  border: none;
+  color: #9F99AD;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 180ms ease;
+
+  &:hover {
+    color: #FF2F7D;
+    background-color: rgba(255, 23, 79, 0.1);
+  }
+}
+
+.lyrics-content {
+  padding: 24px;
+  color: #CAC1DB;
+  font-size: 14px;
+  line-height: 1.8;
+  font-family: inherit;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  margin: 0;
+}
+
+// 歌词弹窗动画
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 200ms ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 // 响应式 - 平板

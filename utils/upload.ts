@@ -20,7 +20,7 @@ interface UploadResult {
   error?: string
 }
 
-/**
+/*
  * 上传文件到 Supabase Storage
  */
 export async function uploadToSupabase(

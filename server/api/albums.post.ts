@@ -3,6 +3,7 @@ import { useSupabase } from '~/server/utils/supabase'
 interface TrackData {
   title: string
   audio_url?: string
+  lyrics?: string
 }
 
 export default defineEventHandler(async (event) => {
@@ -50,7 +51,8 @@ export default defineEventHandler(async (event) => {
         album_id: id,
         title: track.title,
         track_number: index + 1,
-        audio_url: track.audio_url || null
+        audio_url: track.audio_url || null,
+        lyrics: track.lyrics || null
       }))
 
       const { error: trackError } = await supabase
@@ -100,7 +102,8 @@ export default defineEventHandler(async (event) => {
         album_id: albumId,
         title: track.title,
         track_number: index + 1,
-        audio_url: track.audio_url || null
+        audio_url: track.audio_url || null,
+        lyrics: track.lyrics || null
       }))
 
       const { error: trackError } = await supabase

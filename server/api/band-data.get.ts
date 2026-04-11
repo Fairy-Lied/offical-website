@@ -42,7 +42,7 @@ export default defineEventHandler(async () => {
     (albums || []).map(async (album) => {
       const { data: tracks } = await supabase
         .from('album_tracks')
-        .select('id, title, audio_url')
+        .select('id, title, audio_url, lyrics')
         .eq('album_id', album.id)
         .order('track_number')
 
@@ -51,7 +51,8 @@ export default defineEventHandler(async () => {
         tracks: (tracks || []).map(t => ({
           id: t.id,
           title: t.title,
-          audio_url: t.audio_url
+          audio_url: t.audio_url,
+          lyrics: t.lyrics
         }))
       }
     })

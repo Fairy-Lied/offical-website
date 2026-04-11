@@ -13,9 +13,15 @@ const isOpen = ref(false)
 const editingAlbum = ref<any>(null)
 const newTrack = ref('')
 
+// 歌词编辑
+const isLyricsModalOpen = ref(false)
+const editingLyricsIndex = ref<number>(-1)
+const editingLyricsText = ref('')
+
 interface TrackForm {
   title: string
   audio_url?: string
+  lyrics?: string
 }
 
 const form = reactive({
@@ -37,7 +43,8 @@ function openModal(album?: any) {
     if (Array.isArray(tracksData)) {
       form.tracks = tracksData.map((t: any) => ({
         title: typeof t === 'string' ? t : (t.title || ''),
-        audio_url: typeof t === 'string' ? '' : (t.audio_url || '')
+        audio_url: typeof t === 'string' ? '' : (t.audio_url || ''),
+        lyrics: typeof t === 'string' ? '' : (t.lyrics || '')
       }))
     } else {
       form.tracks = []
@@ -63,6 +70,21 @@ function addTrack() {
 
 function removeTrack(index: number) {
   form.tracks.splice(index, 1)
+}
+
+function openLyricsEditor(index: number) {
+  editingLyricsIndex.value = index
+  editingLyricsText.value = form.tracks[index]?.lyrics || ''
+  isLyricsModalOpen.value = true
+}
+
+function saveLyrics() {
+  const track = form.tracks[editingLyricsIndex.value]
+  if (track) {
+    track.lyrics = editingLyricsText.value
+  }
+  isLyricsModalOpen.value = false
+  editingLyricsIndex.value = -1
 }
 
 // 上传 MP3 到指定曲目
@@ -298,6 +320,13 @@ async function handleCoverUpload(event: Event) {
                         <span v-if="track.audio_url" class="ml-2 text-xs text-green-400">♪</span>
                       </div>
                       <div class="flex items-center gap-1 flex-shrink-0">
+                        <UButton
+                            color="neutral"
+                            variant="ghost"
+                            :icon="track.lyrics ? 'i-heroicons-document-text' : 'i-heroicons-document-text'"
+                            size="xs"
+                            @click="openLyricsEditor(index)"
+                        />
                         <input
                             :ref="(el: unknown) => { if (el) audioInputs[index] = el as HTMLInputElement }"
                             type="file"
@@ -340,6 +369,33 @@ async function handleCoverUpload(event: Event) {
                 取消
               </UButton>
               <UButton :loading="saving" @click="save">
+                保存
+              </UButton>
+            </div>
+          </div>
+        </AdminCard>
+      </template>
+    </UModal>
+
+    <!-- 歌词编辑弹窗 -->
+    <UModal v-model:open="isLyricsModalOpen">
+      <template #content>
+        <AdminCard class="w-full max-w-lg">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-4">
+              编辑歌词 - {{ editingLyricsIndex >= 0 ? form.tracks[editingLyricsIndex]?.title : '' }}
+            </h3>
+            <UTextarea
+              v-model="editingLyricsText"
+              :rows="12"
+              placeholder="粘贴或输入歌词..."
+              class="w-full"
+            />
+            <div class="flex justify-end gap-3 mt-4 pt-4 border-t border-gray-700">
+              <UButton color="error" variant="soft" @click="isLyricsModalOpen = false">
+                取消
+              </UButton>
+              <UButton @click="saveLyrics">
                 保存
               </UButton>
             </div>
