@@ -36,6 +36,7 @@ export default defineEventHandler(async () => {
     .from('albums')
     .select('*')
     .order('sort_order')
+    .order('created_at', { ascending: false })
 
   // 获取每个专辑的曲目
   const albumsWithTracks = await Promise.all(
