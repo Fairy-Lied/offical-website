@@ -29,6 +29,7 @@ const form = reactive({
   title: '',
   year: '',
   cover: '',
+  sort_order: 0,
   tracks: [] as TrackForm[]
 })
 
@@ -39,6 +40,7 @@ function openModal(album?: any) {
     form.title = album.title
     form.year = album.year
     form.cover = album.cover || ''
+    form.sort_order = album.sort_order ?? 0
     const tracksData = album.tracks
     if (Array.isArray(tracksData)) {
       form.tracks = tracksData.map((t: any) => ({
@@ -55,6 +57,7 @@ function openModal(album?: any) {
     form.title = ''
     form.year = ''
     form.cover = ''
+    form.sort_order = 0
     form.tracks = []
   }
   newTrack.value = ''
@@ -134,6 +137,7 @@ async function save() {
         title: form.title,
         year: form.year,
         cover: form.cover,
+        sort_order: form.sort_order,
         tracks: form.tracks
       }
     })
@@ -265,6 +269,10 @@ async function handleCoverUpload(event: Event) {
 
               <UFormField label="发行年份" class="w-full">
                 <UInput v-model="form.year" placeholder="如：2026" class="w-full"/>
+              </UFormField>
+
+              <UFormField label="排序序号" class="w-full">
+                <UInput v-model.number="form.sort_order" type="number" placeholder="数字越小越靠前" class="w-full"/>
               </UFormField>
 
               <UFormField label="封面图片" class="w-full">

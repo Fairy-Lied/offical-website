@@ -9,11 +9,12 @@ interface TrackData {
 export default defineEventHandler(async (event) => {
   const supabase = useSupabase()
   const body = await readBody(event)
-  const { id, title, year, cover, tracks } = body as {
+  const { id, title, year, cover, sort_order, tracks } = body as {
     id?: number
     title: string
     year: string
     cover: string
+    sort_order?: number
     tracks: TrackData[]
   }
 
@@ -25,6 +26,7 @@ export default defineEventHandler(async (event) => {
         title,
         year,
         cover,
+        sort_order: sort_order ?? 0,
         updated_at: new Date().toISOString()
       })
       .eq('id', id)

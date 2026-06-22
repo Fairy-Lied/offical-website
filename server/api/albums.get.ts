@@ -8,6 +8,7 @@ export default defineEventHandler(async () => {
     .from('albums')
     .select('*')
     .order('sort_order')
+    .order('created_at', { ascending: false })
 
   if (albumsError) {
     console.error('获取专辑列表失败:', albumsError)
