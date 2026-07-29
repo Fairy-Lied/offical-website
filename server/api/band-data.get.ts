@@ -59,11 +59,17 @@ export default defineEventHandler(async () => {
     })
   )
 
-  // 获取巡演数据
+  // 获取巡演数据（按日期倒序排列）
   const { data: tours } = await supabase
     .from('tours')
     .select('*')
-    .order('sort_order')
+    .order('date', { ascending: false })
+
+  // 字段映射：ticket_url → ticketUrl，兼容前端组件
+  const mappedTours = (tours || []).map(tour => ({
+    ...tour,
+    ticketUrl: tour.ticket_url
+  }))
 
   // 获取图集数据
   const { data: gallery } = await supabase
@@ -92,7 +98,7 @@ export default defineEventHandler(async () => {
       former: formerMembers || []
     },
     albums: albumsWithTracks,
-    tours: tours || [],
+    tours: mappedTours,
     gallery: gallery || [],
     contacts: {
       ...(contacts || { email: '' }),

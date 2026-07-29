@@ -97,6 +97,8 @@ function getStatusClasses(status: TourDate['status']): string {
           <a
             v-if="show.status === 'onsale' && show.ticketUrl"
             :href="show.ticketUrl"
+            target="_blank"
+            rel="noopener noreferrer"
             class="ticket-btn"
             :class="getStatusClasses(show.status)"
           >
